@@ -1,6 +1,6 @@
 # ProyectoDAW-2019-1T
 
-##Descripción Proyecto
+## Descripción Proyecto
 La aplicación que se pretende desarrollar posee como principal propósito convertirse en una herramienta para los visitantes y estudiantes que 
 no conocen las instalaciones de la universidad, como: aulas de clase, facultades, oficinas, bibliotecas, laboratorios, entre otros, también 
 permitirá planificar las actividades de los estudiantes.  El aplicativo será desarrollado especialmente para móviles y mostrará el camino a seguir 
@@ -11,7 +11,7 @@ actividades.También se podrá conocer la ubicación de personas conocidas, y se
 exámenes, etc.) que puedan ser usados por personas que no estén registradas (ajenas a la ESPOL). 
 
 
-##Integrantes:
+## Integrantes:
 - Danny de la A Yagual
 - Axel Godoy Saavedra
 - Fernando Moreno Macías
