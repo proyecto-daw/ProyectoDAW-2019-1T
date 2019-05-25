@@ -1,0 +1,7 @@
+/*Estilo para la barra de progreso*/
+header {
+          background-color: dodgerblue;
+          color: white;
+          text-align: left;
+          padding: 2% 0 2% 0;
+}
