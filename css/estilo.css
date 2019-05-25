@@ -7,19 +7,21 @@ header {
           color: white;
           text-align: left;
           padding: 2% 0 2% 0;
-		  
 }
 
 img{
    width: 100%;
 }
 
+span{
+	display: none;
+}
+
 footer {
-          background-color: darkblue;
-          color: white;
-          text-align: left;
-          padding: 1% 0 1% 0;
-		  
+         background-color: darkblue;
+         color: white;
+         text-align: left;
+         padding: 1% 0 1% 0; 
 }
 
 /*Estilo barra de navegacion*/
@@ -41,7 +43,7 @@ nav a {
   display: block;
   color: black;
   text-align: center;
-  padding: 14px 14px;
+  padding: 12px 30px;
   text-decoration: none;
   font-size: 14px;
   background-color: white;
