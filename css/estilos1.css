@@ -25,6 +25,13 @@ tr:nth-child(even) {
   background-color: green;
 }
 
+#mapid { 
+  height: 400px; 
+  position: relative;
+  outline: none;
+  display: block
+}
+
 footer p {
   text-decoration: none;
   text-align: center;
