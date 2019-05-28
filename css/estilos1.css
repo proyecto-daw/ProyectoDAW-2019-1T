@@ -24,3 +24,8 @@ tr:nth-child(even) {
   height: 30px;
   background-color: green;
 }
+
+footer p {
+  text-decoration: none;
+  text-align: center;
+}
