@@ -1,86 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head>
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>NexusMap</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!–Aplicar iconos de google–>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!link para estilos->
-	<link rel="stylesheet" href="css/estilo.css" media="screen">
-	<link rel="stylesheet" href="css/estilos1.css" media="screen">
-  <!-Mapa->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>NexusMap</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--Aplicar iconos de google-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--link para estilos--->
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
+  <!--Mapa-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
 </head>
-<body onload = "colorTab()">
- <header id="header" class="">
-  <h1>NexusMap<h1>
-  <span id="nomPag">index</span>
+
+<body>
+  <header id="header" class="">
+    <h1>NexusMap<h1>
+        <span id="nomPag">index</span>
   </header>
-  <nav>
-   <ul>
-   <li><a id="indextab" href="index.html" title="">Home</a></li>
-   <li><a href="contacts.html" title="">Contacts</a></li>
-   <li><a href="events.html" title="">Events</a></li>
-   </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" id="indextab" href="index.html" title="">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html" title="">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html" title="">Events</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a class="btn btn-light nav-link" href="login.html" title=""><i class="material-icons md-48">account_circle</i> Login</a></li>
+      </ul>
+    </div>
   </nav>
-  <section id="user_bar">
-  <form action="/action_page.php">
-  <input type="text" name="search" value="Espol"><i class="material-icons md-48">account_circle</i><button type="button">Login</button>
-  </form>
-  </section>
-  </section>
-  <section id="googlemap">
-  <h1>mapa<h1>
-  <div id="mapid"></div>
-  <script src="js/script.js"></script>
-  <!-img src="imagenes/mapa_example.jpg" alt=""->
-  </section>
-  <section id="barra_progreso">
-  <h1>barra progreso<h1>
-    <div id="myProgress">
-    <div id="myBar"></div>
-    </div><i class="material-icons md-48">alarm</i><i class="material-icons md-48">directions_walk</i>
-  </section>
-  <section id="tabla_clases">
-  <h1>Tabla<h1>
-  <table>
-  <tr>
-    <th>Clases</th>
-	<th>Estado</th>
-  </tr>
-  <tr>
-    <td>Algebra Lineal</td>
-    <td><input type="checkbox" name="vehicle1" value="Bike" checked><br></td>
-  </tr>
-  <tr>
-    <td>Calculo de Una Variable</td>
-    <td><input type="checkbox" name="vehicle1" value="Bike" ><br></td>
-   </tr>
-   <tr>
-    <td>Comunicación 1</td>
-    <td><input type="checkbox" name="vehicle1" value="Bike" ><br></td>
-   </tr>
-</table>
-  </section>
-<footer>
- <p>Contact us: <a href="#">@NexusMap<a><p>
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <main class="col-10 offset-1">
+
+    <section id="googlemap">
+      <h2>Map</h2>
+      <form action="" method="post" class="form-inline pb-2">
+        <div class="form-group mr-2">
+          <label for="lugar" class="mr-2 ml-2">Place</label>
+          <input type="text" class="form-control" id="lugar" name="lugar" value="Espol">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <div id="mapid"></div>
+      <script src="js/script.js"></script>
+      <!--img src="imagenes/mapa_example.jpg" alt=""-->
+    </section>
+
+    <section id="barra_progreso">
+      <h2>Progress bar</h2>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </section>
+
+    <section id="tabla_clases">
+      <h2>My Classes</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Class</th>
+            <th scope="col">State</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Algebra Lineal</td>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" name="alg" id="alg" checked disabled class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Calculo de Una Variable</td>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" name="calc" id="calc" checked disabled class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Comunicación 1</td>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" name="com" id="com" disabled class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact us: <a href="#">@NexusMap<a>
+          <p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
-<script src="js/script1.js"></script>
 </html>

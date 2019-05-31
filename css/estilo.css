@@ -1,80 +1,58 @@
-/*Estilos generales*/
-*{
-  font-family: Aldrich;
-}
 header {
-          background-color: darkblue;
-          color: white;
-          text-align: left;
-          padding: 2% 0 2% 0;
+  background-color: darkblue;
+  color: white;
+  text-align: left;
+  padding: 1% 1% 1% 1%;
 }
 
-img{
-   width: 100%;
+section {
+  padding: 20px;
 }
 
-span{
-	display: none;
+img {
+  width: 100%;
+}
+
+span {
+  display: none;
 }
 
 footer {
-         background-color: darkblue;
-         color: white;
-         text-align: left;
-         padding: 1% 0 1% 0; 
-}
-
-/*Estilo barra de navegacion*/
-* {box-sizing: border-box;}
-
-/* Style the navbar */
-nav {
-  overflow: hidden;
   background-color: darkblue;
-}
-
-nav ul{
-	list-style: none;
-}
-
-/* Navbar links */
-nav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 12px 30px;
-  text-decoration: none;
-  font-size: 14px;
-  background-color: white;
+  color: white;
+  text-align: left;
+  padding: 1% 0 1% 0;
 }
 
 /* Navbar links on mouse-over */
 nav a:hover {
   background-color: dodgerblue;
   color: white;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+#myProgress {
+  width: 75%;
+  background-color: grey;
+  text-align: center;
+}
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+#mapid {
+  height: 400px;
+  position: relative;
+  outline: none;
+  display: block
+}
+
+footer p {
   text-decoration: none;
-}
-
-/* Active/current link */
-nav a.active {
-  background-color: black;
-  color: white;
-}
-
-/* Style the input container */
-nav .login-container {
-  float: right;
-}
-
-/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
-@media screen and (max-width: 600px) {
-  nav a {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
+  text-align: center;
 }
