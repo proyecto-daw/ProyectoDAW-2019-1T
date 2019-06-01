@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width">
     <title>NexusMap</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <!--Aplicar iconos de google-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--link para estilos--->
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
+  <!--Mapa-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
     <!–Aplicar iconos de google–>
@@ -18,12 +27,17 @@
  <header id="header" class="">
   <h1>NexusMap<h1>
   </header>
-  <nav>
-   <ul>
-   <li><a href="index.html" title="">Home</a></li>
-   <li><a href="contacts.html" title="">Contacts</a></li>
-   <li><a href="events.html" title="">Events</a></li>
-   </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" id="indextab" href="index.html" title="">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html" title="">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html" title="">Events</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a class="btn btn-light nav-link" href="login.html" title=""><i class="material-icons md-48">account_circle</i> Login</a></li>
+      </ul>
+    </div>
   </nav>
   <section id="listEvents">
   <p>eventos<p>
