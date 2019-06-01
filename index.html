@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
   <!-- Make sure you put this AFTER Leaflet's CSS -->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+  <!-- intro.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css">
 
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="description" content="" />
@@ -23,7 +25,6 @@
 <body>
   <header id="header" class="">
     <h1>NexusMap<h1>
-        <span id="nomPag">index</span>
   </header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,12 +41,12 @@
 
   <main class="col-10 offset-1">
 
-    <section id="googlemap">
+    <section id="googlemap" data-intro="This is the map. It contains your current position and waypoints." data-step="1">
       <h2>Map</h2>
       <form action="" method="post" class="form-inline pb-2">
         <div class="form-group mr-2">
           <label for="lugar" class="mr-2 ml-2">Place</label>
-          <input type="text" class="form-control" id="lugar" name="lugar" value="Espol">
+          <input type="text" class="form-control" id="lugar" name="lugar" value="Espol" data-intro="Enter a place here to search for it." data-step="2">
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
@@ -57,42 +58,55 @@
     </section>
 
     <section id="barra_progreso">
-      <h2>Progress bar</h2>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+      <h2>Time left <span id="monitored_class"></span></h2>
+      <div class="row">
+        <div class="progress col-sm-9" id="progress_bar_container" data-intro="Choose a class below to see the time left for it." data-step="3">
+          <!-- <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div> -->
+        </div>
+        <div class="col-sm-3">
+          <input type="text" disabled id="minutes_left" data-intro="This shows the minutes left for your selected class." data-step="4">
+        </div>
       </div>
     </section>
 
     <section id="tabla_clases">
       <h2>My Classes</h2>
-      <table class="table">
+      <table class="table table-hover" data-intro="Choose a class here." data-step="5">
         <thead>
           <tr>
+            <th />
             <th scope="col">Class</th>
-            <th scope="col">State</th>
+            <th scope="col">Start time</th>
+            <th scope="col" data-intro="A checkbox below will be selected if the class has already started." data-step="6">State</th>
           </tr>
         </thead>
-        <tr>
+        <tr data-index="1" onclick="changeTargetClass(1)">
+          <td></td>
           <td>Algebra Lineal</td>
+          <td>9:30</td>
           <td>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" name="alg" id="alg" checked disabled class="custom-control-input">
+              <input type="checkbox" name="alg" id="alg" disabled class="custom-control-input">
               <label class="custom-control-label"></label>
             </div>
           </td>
         </tr>
-        <tr>
+        <tr data-index="2" onclick="changeTargetClass(2)">
+          <td></td>
           <td>Calculo de Una Variable</td>
+          <td>19:00</td>
           <td>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" name="calc" id="calc" checked disabled class="custom-control-input">
+              <input type="checkbox" name="calc" id="calc" disabled class="custom-control-input">
               <label class="custom-control-label"></label>
             </div>
           </td>
         </tr>
-        <tr>
+        <tr data-index="3" onclick="changeTargetClass(3)">
+          <td></td>
           <td>Comunicación 1</td>
+          <td>19:30</td>
           <td>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" name="com" id="com" disabled class="custom-control-input">
@@ -105,13 +119,17 @@
   </main>
 
   <footer>
-    <p>Contact us: <a href="#">@NexusMap<a>
-          <p>
+    Contact us: <a href="#">@NexusMap</a>
+    <a href="#" onclick="introJs().start()">Tour this page</a>
   </footer>
+
+  <script src="js/interaction.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- intro.js JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
 </body>
 
 </html>
