@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>NexusMap</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--Aplicar iconos de google-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>NexusMap - Events</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--Aplicar iconos de google-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--link para estilos--->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
@@ -13,40 +14,138 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
   <!-- Make sure you put this AFTER Leaflet's CSS -->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+  <!-- intro.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css">
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-    <!–Aplicar iconos de google–>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!link para estilos->
-	<link rel="stylesheet" href="css/estilo.css" media="screen">
-	<link rel="stylesheet" href="css/estilos1.css" media="screen">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
 </head>
+
 <body>
- <header id="header" class="">
-  <h1>NexusMap<h1>
-  </header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">NexusMap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a class="nav-link" id="indextab" href="index.html" title="">Home</a></li>
+        <li class="nav-item"><a class="nav-link" id="indextab" href="index.html" title="">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="contacts.html" title="">Contacts</a></li>
-        <li class="nav-item"><a class="nav-link" href="events.html" title="">Events</a></li>
+        <li class="nav-item active"><a class="nav-link" href="events.html" title="">Events</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item"><a class="btn btn-light nav-link" href="login.html" title=""><i class="material-icons md-48">account_circle</i> Login</a></li>
+        <li class="nav-item"><a class="btn btn-dark nav-link" href="login.html" title=""><i class="material-icons md-48">account_circle</i> Login</a></li>
       </ul>
     </div>
   </nav>
-  <section id="listEvents">
-  <p>eventos<p>
-  </section>
-<footer>
- <p>Contact us: <a href="#">@NexusMap<a><p>
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <main class="col-10 offset-1 mb-5">
+    <section data-intro="Search for events here" data-index="1">
+      <form action="" method="post" class="form-inline">
+        <label class="sr-only" for="event">Name</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="event" placeholder="Find events...">
+
+        <button type="submit" class="btn btn-primary mb-2"><i class="material-icons md-48">search</i> Search</button>
+      </form>
+    </section>
+
+    <section>
+      <h2 class="mb-3">Upcoming events</h2>
+      <div class="row">
+        <!-- Upcoming events list -->
+        <div class="col-sm-8">
+          <ul class="list-group" data-intro="Upcoming events appear here." data-index="2">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 1 <small class="text-muted"><a href="#">Save</a></small></h4>
+                <p class="mb-1">Auditorio de la FIEC</p>
+                <small>Comienza a las 9:30</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 2 <small class="text-muted"><a href="#">Forget</a></small></h4>
+                <p class="mb-1">Coliseo nuevo</p>
+                <small>Comienza a las 13:00</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 3 <small class="text-muted"><a href="#">Save</a></small></h4>
+                <p class="mb-1">Aula BA-32</p>
+                <small>Comienza a las 16:30</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 4 <small class="text-muted"><a href="#">Forget</a></small></h4>
+                <p class="mb-1">Auditorio de la FCSH</p>
+                <small>Comienza mañana las 15:30</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 5 <small class="text-muted"><a href="#">Forget</a></small></h4>
+                <p class="mb-1">Auditorio de la FIEC</p>
+                <small>Comienza dentro de 2 días a las 12:00</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-4">
+          <!-- Search by date -->
+          <h4>Filter by date</h4>
+          <form class="mb-4">
+            <div class="form-group">
+              <label for="from">From: </label>
+              <input id="from" name="from" class="form-control" type="date">
+            </div>
+            <div class="form-group">
+              <label for="to">To: </label>
+              <input id="to" name="to" class="form-control" type="date">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filter</button>
+          </form>
+
+          <!-- My saved events -->
+          <h4>My events</h4>
+          <ul class="list-group" data-intro="Upcoming events appear here." data-index="2">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Evento 2
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Evento 4
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Evento 5
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Contact us: <a href="#">@NexusMap</a>
+    |
+    <a href="#" onclick="introJs().start()">Tour this page</a>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- intro.js JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
 </body>
+
 </html>
