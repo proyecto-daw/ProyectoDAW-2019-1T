@@ -9,25 +9,16 @@ nav {
   background-color: darkblue;
 }
 
+footer {
+  background-color: #224abe;
+}
+
 section {
   padding: 20px;
 }
 
 img {
   width: 100%;
-}
-
-footer {
-  background-color: darkblue;
-  color: white;
-  text-align: center;
-  padding: 1% 0 1% 0;
-}
-
-/* Navbar links on mouse-over */
-nav ul a:hover {
-  background-color: dodgerblue;
-  color: white;
 }
 
 .material-icons {
@@ -53,7 +44,14 @@ nav ul a:hover {
   display: block
 }
 
-footer p {
-  text-decoration: none;
-  text-align: center;
+footer {
+  color: white;
+}
+
+footer a {
+  color: lightgray;
+}
+
+footer a:hover {
+  color: black;
 }

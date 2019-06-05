@@ -1,6 +1,10 @@
 const MUST_FLY_TO_CURRENT_POS = false;
 
-var mymap = L.map('mapid').setView([-2.144463, -79.967838], 18);
+var mymap = L.map('mapid',{
+  scrollWheelZoom: false
+}).setView([-2.144463, -79.967838], 18);
+mymap.on('click', () => { mymap.scrollWheelZoom.enable();});
+mymap.on('mouseout', () => { mymap.scrollWheelZoom.disable();});
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
