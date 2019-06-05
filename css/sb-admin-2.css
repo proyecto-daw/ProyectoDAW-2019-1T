@@ -10685,7 +10685,7 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
+  background-color: 254fcc;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
   background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
   background-size: cover;
@@ -11641,13 +11641,13 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("../img/espol-querida.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background: url("../img/espol-simbolo.png");
   background-position: center;
   background-size: cover;
 }
@@ -11677,12 +11677,36 @@ form.user .btn-user {
 .btn-google {
   color: #fff;
   background-color: #ea4335;
-  border-color: #fff;
+  border-color: #001c43;
 }
 
 .btn-google:hover {
   color: #fff;
   background-color: #e12717;
+  border-color: #e6e6e6;
+}
+
+.btn-academico {
+  color: #fff;
+  background-color: #001c43;
+  border-color: #fff;
+}
+
+.btn-academico:hover {
+  color: #fff;
+  background-color: #003e94;
+  border-color: #e6e6e6;
+}
+
+.btn-sidweb {
+  color: #fff;
+  background-color: #2D3B45;
+  border-color: #fff;
+}
+
+.btn-sidweb:hover {
+  color: #fff;
+  background-color: #364753;
   border-color: #e6e6e6;
 }
 
