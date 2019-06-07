@@ -41,7 +41,7 @@ function changeTargetClass(index) {
 
   document.querySelector("#monitored_class").innerText = '(' + classes[index][0] + ')';
   const mins_left = minutes_left(classes[index]);
-  document.querySelector("#minutes_left").value = mins_left > 0 ? mins_left + " mins" : "Started";
+  document.querySelector("#minutes_left").value = mins_left > 0 ? mins_left + " mins" : "Iniciada";
 
   refreshProgressBar(mins_left);
 }

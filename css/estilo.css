@@ -21,6 +21,15 @@ img {
   width: 100%;
 }
 
+/* Cursor changes when placed over table row (hint for click) */
+.table-hover tr:hover {
+  cursor: pointer;
+}
+/* Doesn't apply to table header */
+.table-hover thead tr:hover {
+  cursor: auto;
+}
+
 .material-icons {
   vertical-align: middle;
 }
@@ -41,7 +50,8 @@ img {
   height: 600px;
   position: relative;
   outline: none;
-  display: block
+  display: block;
+  border-radius: .35rem;
 }
 
 footer {
@@ -55,5 +65,3 @@ footer a {
 footer a:hover {
   color: black;
 }
-
-
