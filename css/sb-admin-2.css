@@ -10970,6 +10970,11 @@ a:focus {
   width: 2rem;
 }
 
+.img-user {
+  height: 1rem;
+  width:  1rem;
+}
+
 .topbar {
   height: 4.375rem;
 }
