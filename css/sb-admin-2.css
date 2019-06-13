@@ -10971,8 +10971,13 @@ a:focus {
 }
 
 .img-user {
-  height: 1rem;
-  width:  1rem;
+  height: 4rem;
+  width:  4rem;
+}
+
+.img-signal {
+  height: 15rem;
+  width:  10rem;
 }
 
 .topbar {
@@ -12077,6 +12082,7 @@ footer.sticky-footer {
   padding: 2rem 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  background-color: #224abe;
 }
 
 footer.sticky-footer .copyright {
