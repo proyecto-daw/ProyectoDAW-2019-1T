@@ -56,3 +56,15 @@ refreshCheckboxes();
 window.setInterval(function() {
   refreshCheckboxes();
 }, 5000); // Update the different "state" checkboxes every 5 secs
+
+$(document).ready(function(){
+  var user=sessionStorage.getItem("user");
+  if(user!=null){
+    user=JSON.parse(user);
+  } else {
+    $("section#tabla_clases table").hide(); // Hide table from document
+
+    // Insert "Log in!" message in place of table
+    $("section#tabla_clases").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de clases!</div>");
+  }
+});

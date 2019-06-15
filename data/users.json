@@ -1,0 +1,92 @@
+{
+  "group": "Users",
+  "members": [{
+      "NAMES": "Axel Jeremy",
+      "LASTNAMES": "Godoy Saavedra",
+      "USERNAME": "AxGo",
+      "EMAIL": "axgo@espol",
+      "PASSWORD": "contrasena",
+      "CAREER": "Ing. Computación",
+      "MATERIAS": [{
+          "NOMBRE": "Desarrollo de Aplicaciones Web",
+          "PARALELO": "2"
+        },
+        {
+          "NOMBRE": "Lenguajes de Programacion",
+          "PARALELO": "1"
+        },
+        {
+          "NOMBRE": "Emprendimiento",
+          "PARALELO": "14"
+        }
+      ]
+    },
+    {
+      "NAMES": "Jose",
+      "LASTNAMES": "Reyes Ruiz",
+      "USERNAME": "JoReyes",
+      "EMAIL": "joreyes@espol",
+      "PASSWORD": "password",
+      "CAREER": "Ing. Computación",
+      "MATERIAS": [{
+          "NOMBRE": "Desarrollo de Aplicaciones Web",
+          "PARALELO": "2"
+        },
+        {
+          "NOMBRE": "Lenguajes de Programacion",
+          "PARALELO": "1"
+        },
+        {
+          "NOMBRE": "Seguridad de la Información",
+          "PARALELO": "1"
+        }
+      ]
+    },
+    {
+      "NAMES": "Danny Leonel",
+      "LASTNAMES": "De La A Yagual",
+      "USERNAME": "DaLeo",
+      "EMAIL": "daleo@espol",
+      "PASSWORD": "qweasdzxc",
+      "CAREER": "Ing. Computación",
+      "MATERIAS": [{
+          "NOMBRE": "Desarrollo de Aplicaciones Web",
+          "PARALELO": "2"
+        },
+        {
+          "NOMBRE": "Lenguajes de Programacion",
+          "PARALELO": "2"
+        },
+        {
+          "NOMBRE": "Sistemas Operativos",
+          "PARALELO": "1"
+        }
+      ]
+    },
+    {
+      "NAMES": "Fernando Saul",
+      "LASTNAMES": "Moreno Macias",
+      "USERNAME": "FerSaul",
+      "EMAIL": "fersaul@espol",
+      "PASSWORD": "123456",
+      "CAREER": "Ing. Computación",
+      "MATERIAS": [{
+          "NOMBRE": "Desarrollo de Aplicaciones Web",
+          "PARALELO": "2"
+        },
+        {
+          "NOMBRE": "Lenguajes de Programacion",
+          "PARALELO": "1"
+        },
+        {
+          "NOMBRE": "Seguridad de la Información",
+          "PARALELO": "1"
+        },
+        {
+          "NOMBRE": "Redes de Datos",
+          "PARALELO": "1"
+        }
+      ]
+    }
+  ]
+}

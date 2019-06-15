@@ -41,10 +41,13 @@
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <p id="login-error" class="form-control-plaintext text-danger">Usuario o contraseña erróneos!</p>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="email" class="form-control form-control-user" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="inputPassword" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -52,10 +55,10 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                    <a href="#" id="login" class="btn btn-primary btn-user btn-block">
                       Login
                     </a>
-					<hr>
+                    <hr>
                     <a href="https://www.academico.espol.edu.ec/login.aspx?ReturnUrl=%2fUI%2fInformacionAcademica%2finformaciongeneral.aspx" class="btn btn-academico btn-user btn-block">
                       <i class="fas fa-graduation-cap fa-fw"></i> Academico
                     </a>
@@ -91,6 +94,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <script src="js/login-script.js"></script>
 
 </body>
 
