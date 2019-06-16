@@ -16,7 +16,7 @@
   <!--Aplicar iconos de google-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -29,12 +29,10 @@
 
   <!-- intro.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css">
-
-  
 </head>
 
 <body>
-   <!-- Page Wrapper -->
+  <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -130,6 +128,13 @@
               </div>
             </li>
 
+            <li class="nav-item" id="admin-button" style="display: none;">
+              <a class="nav-link" href="admin.html">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <i class="fas fa-cog"></i>
+              </a>
+            </li>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,112 +162,158 @@
           </ul>
         </nav>
 
-  <main class="col-10 offset-1 mb-5">
-    <!--<section data-intro="Search for events here" data-index="1">
-      <form action="" method="post" class="form-inline">
-        <label class="sr-only" for="event">Name</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="event" placeholder="Find events...">
-
-        <button type="submit" class="btn btn-primary mb-2"><i class="material-icons md-48">search</i> Search</button>
-      </form>
-    </section>-->
-
-    <section>
-      <h2 class="mb-3">Próximos Eventos</h2>
-      <div class="row">
-        <!-- Upcoming events list -->
-        <div class="col-sm-8">
-          <ul class="list-group" data-intro="Upcoming events appear here." data-index="2">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <h4>Evento 1 <small class="text-muted"><a href="#">Guardar</a></small></h4>
-                <p class="mb-1">Auditorio de la FIEC</p>
-                <small>Comienza a las 9:30</small>
-              </div>
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <h4>Evento 2 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
-                <p class="mb-1">Coliseo nuevo</p>
-                <small>Comienza a las 13:00</small>
-              </div>
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <h4>Evento 3 <small class="text-muted"><a href="#">Guardar</a></small></h4>
-                <p class="mb-1">Aula BA-32</p>
-                <small>Comienza a las 16:30</small>
-              </div>
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <h4>Evento 4 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
-                <p class="mb-1">Auditorio de la FCSH</p>
-                <small>Comienza mañana las 15:30</small>
-              </div>
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <h4>Evento 5 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
-                <p class="mb-1">Auditorio de la FIEC</p>
-                <small>Comienza dentro de 2 días a las 12:00</small>
-              </div>
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-sm-4">
-          <!-- Search by date -->
-          <h4>Filtro por fecha</h4>
-          <form class="mb-4">
-            <div class="form-group">
-              <label for="from">Desde: </label>
-              <input id="from" name="from" class="form-control" type="date">
+        <main class="col-10 offset-1 mb-5">
+          <h2 class="mb-3">Próximos Eventos</h2>
+          <div class="row">
+            <!-- Upcoming events list -->
+            <div class="col-sm-8">
+              <ul class="list-group" data-intro="Los eventos próximos aparecen aquí" data-index="2">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4>Evento 1 <small class="text-muted"><a href="#">Guardar</a></small></h4>
+                    <p class="mb-1">Auditorio de la FIEC</p>
+                    <small>Comienza a las 9:30</small>
+                  </div>
+                  <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4>Evento 2 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                    <p class="mb-1">Coliseo nuevo</p>
+                    <small>Comienza a las 13:00</small>
+                  </div>
+                  <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4>Evento 3 <small class="text-muted"><a href="#">Guardar</a></small></h4>
+                    <p class="mb-1">Aula BA-32</p>
+                    <small>Comienza a las 16:30</small>
+                  </div>
+                  <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4>Evento 4 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                    <p class="mb-1">Auditorio de la FCSH</p>
+                    <small>Comienza mañana las 15:30</small>
+                  </div>
+                  <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4>Evento 5 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                    <p class="mb-1">Auditorio de la FIEC</p>
+                    <small>Comienza dentro de 2 días a las 12:00</small>
+                  </div>
+                  <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+              </ul>
             </div>
-            <div class="form-group">
-              <label for="to">Hasta: </label>
-              <input id="to" name="to" class="form-control" type="date">
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filtrar</button>
-          </form>
 
-          <!-- My saved events -->
-          <h4>Mis eventos</h4>
-          <ul class="list-group" data-intro="Upcoming events appear here." data-index="2">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Evento 2
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Evento 4
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Evento 5
-              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
-          </ul>
+            <div class="col-sm-4">
+              <!-- Search by date -->
+              <section>
+                <h4>Filtro por fecha</h4>
+                <form class="mb-4">
+                  <div class="form-group">
+                    <label for="from">Desde: </label>
+                    <input id="from" name="from" class="form-control" type="date">
+                  </div>
+                  <div class="form-group">
+                    <label for="to">Hasta: </label>
+                    <input id="to" name="to" class="form-control" type="date">
+                  </div>
+                  <button type="submit" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filtrar</button>
+                </form>
+              </section>
+
+              <!-- My saved events -->
+              <section id="mis-eventos">
+                <h4>Mis eventos</h4>
+                <ul class="list-group" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="3">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Evento 2
+                    <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Evento 4
+                    <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Evento 5
+                    <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="sticky-footer ">
+          <div class=" py-2 container my-auto">
+            <div class="copyright text-center my-auto">
+              Contáctenos: <a href="#">@NexusMap</a>
+              |
+              <a href="#" onclick="introJs().start()">Visita guiada</a>
+            </div>
+          </div>
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto ">
+              <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
+              <a class="px-5" href=team.html>Equipo</a>
+              <a class="px-5" href=news.html>Noticias</a>
+
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    Contactanos: <a href="#">@NexusMap</a>
-    |
-    <a href="#" onclick="introJs().start()">visita guiada</a>
-  </footer>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <!-- intro.js JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <script src="js/base.js"></script>
+    <script src="js/eventos-script.js"></script>
+
+    <!-- intro.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
 </body>
 
 </html>

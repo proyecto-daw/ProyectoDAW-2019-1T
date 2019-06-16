@@ -18,6 +18,9 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!--link para estilos--->
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
+
 </head>
 
 <body id="page-top">
@@ -25,7 +28,8 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar -->
+    <ul class="side-nav fixed navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar ">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -38,36 +42,31 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-home"></i>
-          <span>Home</span></a>
+          <span>Inicio</span></a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-	  
-	  <!-- Nav Item - Dashboard -->
+
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="events.html">
           <i class="fas fa-fw fa-calendar-alt"></i>
-          <span>Events</span></a>
+          <span>Eventos</span></a>
       </li>
-
-   
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-	  
-	  <!-- Nav Item - Dashboard -->
+
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="contacts.html">
           <i class="fa fa-list-ul"></i>
-          <span>Contacts</span></a>
+          <span>Contactos</span></a>
       </li>
 
-    <!-- Divider -->
+      <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
     </ul>
@@ -90,7 +89,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -111,7 +110,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -231,32 +230,24 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <i class="fas fa-user-tie fa-sm fa-fw mr-2 text-gray-400"></i>
+              <a class="nav-link dropdown-toggle" href="login.html" data-toggle="dropdown" id="userDropdown" role="button">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Iniciar sesión</span>
+                <i class="fas fa-user-circle"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Perfil
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-				<a class="dropdown-item" href="admin.html">
-                  <i class="fas fa-user-tie fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Admin Login
+                  Configuraci&oacute;n
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Cerrar sesión
                 </a>
               </div>
             </li>
@@ -368,70 +359,79 @@
                   </div>
                 </div>
               </div>
+            </div>
+
           </div>
+          <!-- /.container-fluid -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer ">
+          <div class=" py-2 container my-auto">
+            <div class="copyright text-center my-auto">
+              Contáctenos: <a href="#">@NexusMap</a>
+            </div>
+          </div>
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto ">
+              <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
+              <a class="px-5" href=team.html>Equipo</a>
+              <a class="px-5" href=news.html>Noticias</a>
+
+            </div>
+        </footer>
+        <!-- End of Footer -->
 
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="js/base.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

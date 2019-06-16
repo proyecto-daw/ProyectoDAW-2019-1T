@@ -131,6 +131,13 @@
               </div>
             </li>
 
+            <li class="nav-item" id="admin-button" style="display: none;">
+              <a class="nav-link" href="admin.html">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <i class="fas fa-cog"></i>
+              </a>
+            </li>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="login.html" data-toggle="dropdown" id="userDropdown" role="button">
@@ -180,8 +187,7 @@
           <section id="googlemap" data-intro="Este es el mapa. Contiene su ubicación actual y puntos de interés." data-step="2">
             <h2 class="mb-2">Mapa</h2>
             <p>// DEBUG: ver <a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/geolocation">aquí</a> para cómo usar datos de geolocalización falsos</p>
-            <div id="mapid" class="card shadow" ></div>
-            <script src="js/script.js"></script>
+            <div id="mapid" class="card shadow"></div>
             <!--img src="imagenes/mapa_example.jpg" alt=""-->
           </section>
 
@@ -311,6 +317,7 @@
 
   <script src="js/interaction.js"></script>
   <script src="js/base.js"></script>
+  <script src="js/script.js"></script>
 
   <!-- intro.js JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
