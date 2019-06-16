@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -16,7 +16,11 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
+
+
 
 </head>
 
@@ -68,9 +72,8 @@
           <span>Contacts</span></a>
       </li>
 
-      <hr class="sidebar-divider">
+        <hr class="sidebar-divider">
 
-      
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
           <i class="fa fa-question"></i>
@@ -100,7 +103,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -121,7 +124,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por" aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -276,21 +279,54 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">¿Qué hacemos?</h1>
 
-        </div>
         <!-- /.container-fluid -->
+         <div id="aboutWebPage" class="card shadow mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h3 class="m-0 font-weight-bold text-primary">Conoce el sitio web</h3>
+          </div>
+          <div class="card-body text-justify">
+         <div class="row">
+          <div class="col mr-6">
+                  <h5 class ="mb-1">Este sitio web te permitirá ubicarte dentro de las instalaciones de la ESPOL especialmente si eres novato o un visitante que no conoce nada sobre la universidad aquí encontrarás las siguientes funcionalidades generales: </h5>
+                    <ul class ="mb-1">
+                     <li class ="mb-1">Búsqueda de un lugar en específico que será mostrado en un mapa incluyendo la ruta a seguir para llegar al destino deseado en base a tu ubicación actual.</li>
+                     <li class ="mb-1">Lista de eventos próximos a realizarse en la ESPOL, además de la posibilidad de buscar un evento específico ya sea por nombre o fecha.
+                     </li>
+                    </ul>
+                  <h5 class ="mb-1">
+                    Si eres un estudiante y deseas sincronizar tus horarios y actividades debes crearte una cuenta y subir tu horario de clases actual, se mostrará el tiempo restante para la actividad más cercana y se enviarán notificaciones cuando alguna actividad se encuentra cerca de iniciar. Por otro lado con tu cuenta podrás ponerte en contacto con tus compañeros para crear grupos y conversar con ellos en línea e incluse solicitar su ubicación para saber como llegar a un lugar en específico.
+                  Si eres un visitante o estudiante y posees una cuenta podrás guardar tus eventos y se enviarán diferentes notificaciones para que puedas estar pendiente de la hora, lugar y fecha del evento que te interesa.
+                </h5>
+           </div>
+           <div class="col mr-6">
+                <img class="img-welcome img-thumbnail" src="img/process.png">
+           </div>
 
+      </div>
+
+      </div>
+      </div>
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
+      <footer class="sticky-footer ">
+        <div class=" py-2 container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            Contáctenos: <a href="#">@NexusMap</a>
+            |
+            <a href="#" onclick="introJs().start()">Visita guiada</a>
           </div>
         </div>
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto ">
+            <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
+            <a class="px-5" href=team.html>Equipo</a>
+            <a class="px-5" href=news.html>Noticias</a>
+
+          </div>
       </footer>
       <!-- End of Footer -->
 
