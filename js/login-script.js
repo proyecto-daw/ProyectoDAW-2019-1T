@@ -4,7 +4,7 @@ $(document).ready(function() {
   $("a#login").click(function() {
 
     $.ajax({
-      url: "http://ec2-52-67-124-155.sa-east-1.compute.amazonaws.com/data/users.json",
+      url: "data/users.json",
       // url: "http://localhost:5000/data/users.json",
       method: "POST",
       data: {
