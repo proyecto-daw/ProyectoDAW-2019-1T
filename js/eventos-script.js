@@ -4,18 +4,25 @@ $(document).ready(function() {
     user = JSON.parse(user);
   } else {
     $("section#mis-eventos ul").hide(); // Hide "Mis eventos" from document
-    $("section#mis-eventos").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de eventos,"+ 
-    "añadir nuevos eventos a su lista o poder eliminarlos de su lista!\n<small class='text-muted'><a href='login.html'>Iniciar sesion</a></div>");
-    $("div#all_events a#p").hide(); //Ocultra los guardar y olvidar en los eventos
-    
+    $("section#mis-eventos").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de eventos!</div>");
   }
 });
-/* Selecciona el boton del filtro */
-var filtro_button=$('#filtro_button');
 
-close.click(function(){
-  /* funcion de filtro*/
-  var from=$('#from').text();
-  
+$(document).ready(function() {
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/events",
+    method: "GET",
+    success: function(data, status) {
+      var events=data.events;
+      for(let e in events){
+        var card=$("li#template-event").clone().removeAttr("id");
+        card.show();
+        console.log(e);
+        $("h4", card).text(events[e][0]);
+        $("p", card).text(events[e][1]);
+        $("small", card).text(events[e][3]);
+        $("div#all_events ul").append(card);
+      }
+    }
+  });
 });
-

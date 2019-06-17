@@ -188,7 +188,15 @@
         <!-- Upcoming events list -->
         <div class="col-sm-8" id="all_events">
           <ul class="list-group" data-intro="Los eventos próximos aparecen aquí." data-index="2">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li style="display: none!important;" id="template-event" class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4>Evento 1 <small class="text-muted"><a id="p" href="#">Guardar</a></small></h4>
+                <p class="mb-1">Auditorio de la FIEC</p>
+                <small>Comienza a las 9:30</small>
+              </div>
+              <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+            </li>
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
                 <h4>Evento 1 <small class="text-muted"><a id="p" href="#">Guardar</a></small></h4>
                 <p class="mb-1">Auditorio de la FIEC</p>
@@ -227,7 +235,7 @@
                 <small>Comienza dentro de 2 días a las 12:00</small>
               </div>
               <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-            </li>
+            </li> -->
           </ul>
         </div>
 

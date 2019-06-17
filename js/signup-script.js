@@ -1,15 +1,16 @@
 $(document).ready(function() {
-  $("p#login-error").hide();
-
-  $("a#login").click(function() {
-
+  $("form").submit(function(event) {
+    event.preventDefault();
     $.ajax({
-      url: "https://fathomless-tor-48974.herokuapp.com/data/users.json",
-      //url: "http://localhost:5000/data/users.json",
+      url: "https://fathomless-tor-48974.herokuapp.com/signup",
       method: "POST",
       data: {
-        "username": $("input#inputEmail").val(),
-        "password": $("input#inputPassword").val()
+        "USERNAME": $("input#inputUsername").val(),
+        "NAMES": $("input#firstName").val(),
+        "LASTNAMES": $("input#lastName").val(),
+        "EMAIL": $("input#inputEmail").val(),
+        "PASSWORD": $("input#inputPassword").val(),
+        "CAREER": $("input#inputCareer").val()
       },
       success: function(data, status) {
         var found = null;

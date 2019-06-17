@@ -37,36 +37,36 @@
               <form class="user">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombre">
+                    <input type="text" class="form-control form-control-user" id="firstName" required placeholder="Nombre">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Apellido">
+                    <input type="text" class="form-control form-control-user" id="lastName" required placeholder="Apellido">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Correo">
+                  <input type="email" class="form-control form-control-user" id="inputEmail" required placeholder="Correo">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nombre de Usuario">
+                    <input type="text" class="form-control form-control-user" id="inputUsername" required placeholder="Nombre de Usuario">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Contraseña">
+                    <input type="password" class="form-control form-control-user" id="inputPassword" required placeholder="Contraseña">
                   </div>
                 </div>
-				<div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Carrera">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="inputCareer" required placeholder="Carrera">
                 </div>
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                <button type="submit" href="#" id="signup" class="btn btn-primary btn-user btn-block">
                   Registrarse
+                </button>
+                <hr>
+                <a href="https://www.academico.espol.edu.ec/login.aspx?ReturnUrl=%2fUI%2fInformacionAcademica%2finformaciongeneral.aspx" class="btn btn-academico btn-user btn-block">
+                  <i class="fas fa-graduation-cap fa-fw"></i> Academico
                 </a>
-				<hr>
-                    <a href="https://www.academico.espol.edu.ec/login.aspx?ReturnUrl=%2fUI%2fInformacionAcademica%2finformaciongeneral.aspx" class="btn btn-academico btn-user btn-block">
-                      <i class="fas fa-graduation-cap fa-fw"></i> Academico
-                    </a>
-                    <a href="https://www.sidweb.espol.edu.ec/" class="btn btn-sidweb btn-user btn-block">
-                      <i class="fas fa-chalkboard-teacher fa-fw"></i> Sidweb
-                    </a>
+                <a href="https://www.sidweb.espol.edu.ec/" class="btn btn-sidweb btn-user btn-block">
+                  <i class="fas fa-chalkboard-teacher fa-fw"></i> Sidweb
+                </a>
               </form>
               <hr>
               <div class="text-center">
@@ -86,6 +86,9 @@
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <script src="js/base.js"></script>
+  <script src="js/signup-script.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>

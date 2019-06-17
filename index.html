@@ -210,7 +210,18 @@
                   <th scope="col" data-intro="Las celdas de abajo indican si la clase ya ha iniciado." data-step="4">¿Iniciada?</th>
                 </tr>
               </thead>
-              <tr data-index="1" onclick="changeTargetClass(1)">
+              <tr style="display: none!important" id="class-session-template" data-index="-1" onclick="changeTargetClass(-1)">
+                <td></td>
+                <td>&Aacute;lgebra Lineal</td>
+                <td>9:30</td>
+                <td>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="alg" id="alg" disabled class="custom-control-input">
+                    <label class="custom-control-label"></label>
+                  </div>
+                </td>
+              </tr>
+              <!-- <tr data-index="1" onclick="changeTargetClass(1)">
                 <td></td>
                 <td>&Aacute;lgebra Lineal</td>
                 <td>9:30</td>
@@ -242,7 +253,7 @@
                     <label class="custom-control-label"></label>
                   </div>
                 </td>
-              </tr>
+              </tr> -->
             </table>
           </section>
 

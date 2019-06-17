@@ -1,14 +1,13 @@
 var currentlyActiveRow = -1;
 
-const classes = { // index: [name, hour_of_start, minute_of_start]
-  1: ["Álgebra Lineal", 9, 30],
-  2: ["Cálculo de Una Variable", 19, 10],
-  3: ["Comunicación I", 19, 30],
+let classes = { // index: [name, hour_of_start, minute_of_start]
 };
 
 function minutes_left(target_class) {
   const d = new Date();
-  return (target_class[1] - d.getHours()) * 60 + (target_class[2] - d.getMinutes());
+  var hour_of_start = parseInt(target_class.HORA.split(":")[0]);
+  var minute_of_start = parseInt(target_class.HORA.split(":")[1])
+  return (hour_of_start - d.getHours()) * 60 + (minute_of_start - d.getMinutes());
 }
 
 function refreshProgressBar(minutes_left) {
@@ -39,7 +38,7 @@ function changeTargetClass(index) {
   const clickedRow = document.querySelector(queryStringNext);
   clickedRow.innerHTML = '<i class="material-icons md-48">arrow_right</i></td>';
 
-  document.querySelector("#monitored_class").innerText = '(' + classes[index][0] + ')';
+  document.querySelector("#monitored_class").innerText = '(' + classes[index].NOMBRE + ')';
   const mins_left = minutes_left(classes[index]);
   document.querySelector("#minutes_left").value = mins_left > 0 ? mins_left + " mins" : "Iniciada";
 
@@ -49,18 +48,43 @@ function changeTargetClass(index) {
 function refreshCheckboxes() {
   for (let c in classes) {
     let checkbox = document.querySelector('tr[data-index="' + c + '"] input');
-    checkbox.checked = minutes_left(classes[c]) <= 0;
+    if (checkbox != null)
+      checkbox.checked = minutes_left(classes[c]) <= 0;
   }
 }
-refreshCheckboxes();
+
 window.setInterval(function() {
   refreshCheckboxes();
 }, 5000); // Update the different "state" checkboxes every 5 secs
 
-$(document).ready(function(){
-  var user=sessionStorage.getItem("user");
-  if(user!=null){
-    user=JSON.parse(user);
+$(document).ready(function() {
+  var user = sessionStorage.getItem("user");
+  if (user != null) {
+    user = JSON.parse(user);
+
+    $.ajax({
+      url: "https://fathomless-tor-48974.herokuapp.com/get_my_classes",
+      method: "POST",
+      data: {
+        "username": user.EMAIL,
+        "password": user.PASSWORD,
+      },
+      success: function(data, status) {
+        let cls = data.classes;
+        for (let c in cls) {
+          var row = $("tr#class-session-template").clone().removeAttr("id");
+          row.show();
+          row.attr("data-index", c);
+          row.attr("onclick", "changeTargetClass(" + c + ")");
+          $("td:nth-child(2)",row).html(cls[c].NOMBRE);
+          $("td:nth-child(3)",row).html(cls[c].HORA);
+          $("table").append(row);
+          classes[c] = cls[c];
+        }
+
+        refreshCheckboxes();
+      }
+    });
   } else {
     $("section#tabla_clases table").hide(); // Hide table from document
 

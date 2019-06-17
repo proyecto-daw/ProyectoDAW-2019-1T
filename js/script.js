@@ -23,7 +23,7 @@ var areas;
 
 $(document).ready(function() {
   $.ajax({
-    url: "http://ec2-52-67-124-155.sa-east-1.compute.amazonaws.com/waypoints",
+    url: "https://fathomless-tor-48974.herokuapp.com/waypoints",
     success: function(data, status) {
       markers = data.waypoints;
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 
   $.ajax({
-    url: "http://ec2-52-67-124-155.sa-east-1.compute.amazonaws.com/areas",
+    url: "https://fathomless-tor-48974.herokuapp.com/areas",
     success: function(data, status) {
       areas = data.areas;
 
