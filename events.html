@@ -181,15 +181,16 @@
     </section>-->
 
     <section>
-      <h2 class="mb-3">Próximos Eventos</h2>
+      <h2 class="mb-3">Próximos Eventos </h2>
       <p> Aquí encontrarás una gran variedad de eventos que se llevarán a cabo en las instalaciones de la ESPOL, si algún evento en especial te interesa podrás visualizar en el mapa una ruta de llegada en base a tu ubicación actual, además si inicias sesión podrás guardar eventos y ser notificado sobre su inicio. </p>
+      <p>Revise la <a href="#" onclick="introJs().start()">Visita guiada</a> para ver mas detalles.</p>
       <div class="row">
         <!-- Upcoming events list -->
-        <div class="col-sm-8">
+        <div class="col-sm-8" id="all_events">
           <ul class="list-group" data-intro="Los eventos próximos aparecen aquí." data-index="2">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                <h4>Evento 1 <small class="text-muted"><a href="#">Guardar</a></small></h4>
+                <h4>Evento 1 <small class="text-muted"><a id="p" href="#">Guardar</a></small></h4>
                 <p class="mb-1">Auditorio de la FIEC</p>
                 <small>Comienza a las 9:30</small>
               </div>
@@ -197,7 +198,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                <h4>Evento 2 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                <h4>Evento 2 <small class="text-muted"><a id="p" href="#">Olvidar</a></small></h4>
                 <p class="mb-1">Coliseo nuevo</p>
                 <small>Comienza a las 13:00</small>
               </div>
@@ -205,7 +206,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                <h4>Evento 3 <small class="text-muted"><a href="#">Guardar</a></small></h4>
+                <h4>Evento 3 <small class="text-muted"><a id="p" href="#">Guardar</a></small></h4>
                 <p class="mb-1">Aula BA-32</p>
                 <small>Comienza a las 16:30</small>
               </div>
@@ -213,7 +214,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                <h4>Evento 4 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                <h4>Evento 4 <small class="text-muted"><a id="p" href="#">Olvidar</a></small></h4>
                 <p class="mb-1">Auditorio de la FCSH</p>
                 <small>Comienza mañana las 15:30</small>
               </div>
@@ -221,7 +222,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                <h4>Evento 5 <small class="text-muted"><a href="#">Olvidar</a></small></h4>
+                <h4>Evento 5 <small class="text-muted"><a id="p" href="#">Olvidar</a></small></h4>
                 <p class="mb-1">Auditorio de la FIEC</p>
                 <small>Comienza dentro de 2 días a las 12:00</small>
               </div>
@@ -232,7 +233,7 @@
 
             <div class="col-sm-4">
               <!-- Search by date -->
-              <section>
+              <section data-intro="Aqui puede filtrar los eventos." data-index="4">
                 <h4>Filtro por fecha</h4>
                 <form class="mb-4">
                   <div class="form-group">
@@ -248,9 +249,9 @@
               </section>
 
               <!-- My saved events -->
-              <section id="mis-eventos">
+              <section id="mis-eventos" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="4">
                 <h4>Mis eventos</h4>
-                <ul class="list-group" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="3">
+                <ul class="list-group" >
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Evento 2
                     <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
@@ -274,8 +275,7 @@
           <div class=" py-2 container my-auto">
             <div class="copyright text-center my-auto">
               Contáctenos: <a href="#">@NexusMap</a>
-              |
-              <a href="#" onclick="introJs().start()">Visita guiada</a>
+              
             </div>
           </div>
           <div class="container my-auto">
