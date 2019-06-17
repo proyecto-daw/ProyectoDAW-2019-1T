@@ -10,3 +10,12 @@ $(document).ready(function() {
     
   }
 });
+/* Selecciona el boton del filtro */
+var filtro_button=$('#filtro_button');
+
+close.click(function(){
+  /* funcion de filtro*/
+  var from=$('#from').text();
+  
+});
+
