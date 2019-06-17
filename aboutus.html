@@ -16,7 +16,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
 
 </head>
 
@@ -56,8 +58,6 @@
           <span>Eventos</span></a>
       </li>
 
-   
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 	  
@@ -67,6 +67,8 @@
           <i class="fa fa-list-ul"></i>
           <span>Contactos</span></a>
       </li>
+      
+      <hr class="sidebar-divider">
 
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
@@ -129,6 +131,13 @@
               </div>
             </li>
 
+            <li class="nav-item" id="admin-button" style="display: none;">
+              <a class="nav-link" href="admin.html">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                <i class="fas fa-cog"></i>
+              </a>
+            </li>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,22 +168,24 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
+        <!-- /.container-fluid -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Acerca de nosotros</h1>
+           
 
-        </div>
+
         <!-- /.container-fluid -->
-
+        
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer ">
+       <footer class="sticky-footer">
         <div class=" py-2 container my-auto">
           <div class="copyright text-center my-auto">
-            Contáctenos: <a href="#">NexusMap</a>
+            Contáctenos: <a href="contactus.html">NexusMap</a>
             |
             <a href="#" onclick="introJs().start()">Visita guiada</a>
           </div>
@@ -228,6 +239,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
 
 </body>
 
