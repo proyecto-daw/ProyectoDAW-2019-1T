@@ -10,6 +10,9 @@
       "MATERIAS": [{
           "NOMBRE": "Desarrollo de Aplicaciones Web",
           "PARALELO": "2"
+		  "HORA_INICIO":
+		  "HORA_FINAL":
+		  "LUGAR":
         },
         {
           "NOMBRE": "Lenguajes de Programacion",
