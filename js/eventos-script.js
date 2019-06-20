@@ -4,7 +4,9 @@ $(document).ready(function() {
     user = JSON.parse(user);
   } else {
     $("section#mis-eventos ul").hide(); // Hide "Mis eventos" from document
-    $("section#mis-eventos").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de eventos!</div>");
+    $("section#mis-eventos").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de eventos y guardar eventos!</div>");
+
+    $(".hide-if-not-logged").hide();
   }
 });
 
@@ -17,10 +19,11 @@ $(document).ready(function() {
       for(let e in events){
         var card=$("li#template-event").clone().removeAttr("id");
         card.show();
-        console.log(e);
-        $("h4", card).text(events[e][0]);
+        
+        $("h4 span", card).html(events[e][0]);
         $("p", card).text(events[e][1]);
-        $("small", card).text(events[e][3]);
+        $("div>small", card).text(moment(events[e][3]).format('MMMM D YYYY, h:mm A'));
+        $(".goto-link", card).attr("href","index.html?towp="+ events[e][2]);
         $("div#all_events ul").append(card);
       }
     }

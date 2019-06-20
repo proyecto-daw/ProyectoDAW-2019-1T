@@ -43,6 +43,8 @@ function changeTargetClass(index) {
   document.querySelector("#minutes_left").value = mins_left > 0 ? mins_left + " mins" : "Iniciada";
 
   refreshProgressBar(mins_left);
+
+  computeShortestRoute(classes[index].BLOQUE);
 }
 
 function refreshCheckboxes() {
@@ -87,8 +89,22 @@ $(document).ready(function() {
     });
   } else {
     $("section#tabla_clases table").hide(); // Hide table from document
+    $("section#tabla_clases p").hide(); // Also hide "Click here to upload calendar" text
 
     // Insert "Log in!" message in place of table
     $("section#tabla_clases").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de clases!</div>");
   }
+});
+
+$(document).ready(function() {
+  // Callback for "Subir calendario" in modal
+  $("#uploadCalForm").submit(function(event) {
+    event.preventDefault();
+    console.log("Uploading cal");
+    // TODO Call API endpoint /upload_my_calendar, pass username&password on data, pass file 
+
+    $("#uploadCalModal").modal("hide");
+
+    //location.reload(); // Force reload page to reload table (when required)
+  });
 });

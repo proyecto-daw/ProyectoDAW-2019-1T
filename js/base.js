@@ -3,7 +3,7 @@ $(document).ready(function() {
   updateAdminButton();
 
   // Callback for "Cerrar sesión" in modal
-  $(".modal .btn-primary").click(function() {
+  $("#logoutModal .btn-primary").click(function() {
     $(".modal").modal("hide");
     sessionStorage.removeItem("user");
     location.reload(); // Force reload page to restyle login button

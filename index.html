@@ -158,10 +158,6 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuraci&oacute;n
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -221,40 +217,10 @@
                   </div>
                 </td>
               </tr>
-              <!-- <tr data-index="1" onclick="changeTargetClass(1)">
-                <td></td>
-                <td>&Aacute;lgebra Lineal</td>
-                <td>9:30</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="alg" id="alg" disabled class="custom-control-input">
-                    <label class="custom-control-label"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr data-index="2" onclick="changeTargetClass(2)">
-                <td></td>
-                <td>C&aacute;lculo de Una Variable</td>
-                <td>19:00</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="calc" id="calc" disabled class="custom-control-input">
-                    <label class="custom-control-label"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr data-index="3" onclick="changeTargetClass(3)">
-                <td></td>
-                <td>Comunicaci&oacute;n 1</td>
-                <td>19:30</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="com" id="com" disabled class="custom-control-input">
-                    <label class="custom-control-label"></label>
-                  </div>
-                </td>
-              </tr> -->
             </table>
+            <p>
+              Haga clic <a href="#" data-toggle="modal" data-target="#uploadCalModal">aquí</a> para subir un calendario ICS.
+            </p>
           </section>
 
           <section id="barra_progreso">
@@ -290,7 +256,7 @@
             <a class="px-5" href=team.html>Equipo</a>
             <a class="px-5" href=news.html>Noticias</a>
           </div>
-          </div>
+        </div>
       </footer>
       <!-- End of Footer -->
 
@@ -304,6 +270,33 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+  <!-- Upload Calendar Modal-->
+  <div class="modal fade" id="uploadCalModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Subir calendario</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Escoja un archivo .ics generado por el Académico para establecer su lista de clases.</p>
+          <p class="text-danger">¡Esto reemplazará su lista actual de clases!</p>
+          <form id="uploadCalForm">
+            <div class="form-group">
+              <label for="file">Archivo .ics</label>
+              <input type="file" accept=".ics" class="form-control-file" id="file">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" form="uploadCalForm" value="Subir"/>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

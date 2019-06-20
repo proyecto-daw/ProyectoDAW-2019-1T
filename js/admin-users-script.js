@@ -50,6 +50,11 @@ function lockUnlockUser(event) {
     return;
   }
 
+  if (event.data.email == user.EMAIL) {
+    alert("No se puede bloquear al usuario que tiene iniciada sesión. Inicie sesión como otro administrador para editar a " + event.data.email);
+    return;
+  }
+
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/api_admin/block_user",
     method: "POST",
@@ -70,6 +75,11 @@ function adminUnadminUser(event) {
   if (user != null) {
     user = JSON.parse(user);
   } else {
+    return;
+  }
+
+  if (event.data.email == user.EMAIL) {
+    alert("No se puede editar al usuario que tiene iniciada sesión. Inicie sesión como otro administrador para editar a " + event.data.email);
     return;
   }
 
