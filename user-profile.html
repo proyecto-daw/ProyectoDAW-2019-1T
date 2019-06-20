@@ -174,7 +174,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Perfil</h1>
-          <div class="col-lg-6">
+          
 		  <div id="welcome" class="card shadow mr-6">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -190,13 +190,14 @@
 				  <div class="col mr-6">
                    <h2 class="mb-1">Desde aqui podrás:</h2>
                     <ul>
+					 <li>Observar tus datos personales.</li>
                      <li>Adminitrar los grupos de los que eres parte.</li>
                      <li>La opcion de eliminar contactos.</li>
                     </ul>
 				   </div>				   
                 </div>
               </div>
-			</div>
+			
 
 		<!-- Contacts generales -->
 		  <div id= "cuerpo-login" class="row">
@@ -206,231 +207,34 @@
               <!-- Basic Card Example -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Resultados(12)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Datos Personales</h6>
                 </div>
+				<!-- Cuerpo-->
                 <div class="card-body">
-                  <div class="row">
-
-                  <!-- Profile Card Example -->
-                    <div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
+                    <form action="/action_page.php">
+					     <div class="form-group">
+                         <label for="nombre">Nombre:</label>
+                         <input class="form-control" type="text" id="nombre" name="firstname" placeholder="Axel" readonly>
                          </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valessca Rodriguez</div>
+						 <!--<div class="form-group">
+                         <label for="apellido">Apellido:</label>
+                         <input class="form-control" type="text" id="apellido" name="lastname" placeholder="Godoy" readonly>
+						 </div>-->
+						 <div class="form-group">
+						 <label for="n_usuario">Nombre de Usuario:</label>
+                         <input class="form-control" type="text" id="n_usuario" name="firstname" placeholder="AxGo" readonly>
+						  </div>
+                         <div class="form-group">
+                         <label for="correo">E-mail:</label>
+                         <input class="form-control" type="text" id="correo" name="correo" placeholder="example@espo.com" readonly>
                          </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Moon</div>
+						 <div class="form-group">
+                         <label for="carrera">Carrera:</label>
+                         <input class="form-control" type="text" id="carrera" name="carrera" placeholder="Ingeniería" readonly>
                          </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Rodrigo Valencia</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">The Ancient Mariner</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Ricardo Velez</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valeria Morales</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-11">
-				            <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valentina Cruz</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-					<div class="col-lg-6">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                      <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-						   <div class="col mr-12">
-				            <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-						   </div>
-                         <div class="col mr-11">
-                             <div class="text-xs font-weight-bold text-primary  mb-3">Valerion Black</div>
-                         </div>
-                         <div class="col-auto">
-                         <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                        </div>
-                        </div>
-                      </div>
-                     </div>
-                    </div>
-
-			     <!-- add another Profile-->
+                    </form>
                 </div>
-                </div>
+				<!-- Cuerpo-->
               </div>
 
             </div>
@@ -507,7 +311,7 @@
 			  <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardGroups" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                  <h6 class="m-0 font-weight-bold text-secondary">Grupos</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Grupos</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardGroups">
@@ -623,6 +427,7 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <script src="js/base.js"></script>
+  <script src="js/profile.js"></script>
   <script src="js/contacts-scripts.js"></script>
 
   <!-- intro.js JS -->
