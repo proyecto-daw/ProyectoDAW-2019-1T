@@ -37,7 +37,7 @@ $(document).ready(function() {
           searchFor(f.EMAIL)
         });
 
-        $("#collapseCardFriends div").append(card);
+        $("#collapseCardFriends>.card-body").append(card);
       }
     }
   });
