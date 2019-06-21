@@ -11661,6 +11661,11 @@ a:focus {
   background-position: center;
   background-size: cover;
 }
+.bg-contactus-image{
+  background: url("../img/contactus.png");
+  background-position: center;
+  background-size: cover;
+}
 
 .bg-password-image {
   background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
