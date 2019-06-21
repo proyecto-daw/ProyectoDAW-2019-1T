@@ -69,3 +69,63 @@ footer a:hover {
 #notSearch{
 	visibility:hidden;
 }
+
+.notifyjs-request-base {
+  opacity: 0.85;
+  width: 300px;
+  background: #F5F5F5;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.notifyjs-request-base .title {
+  width: 170px;
+  float: left;
+  margin: 10px 0 0 10px;
+  text-align: right;
+}
+
+.notifyjs-request-base .buttons {
+  width: 100px;
+  float: right;
+  font-size: 11px;
+  padding: 5px;
+  margin: 2px;
+}
+
+.notifyjs-request-base button {
+  font-size: 11px;
+  padding: 5px;
+  margin: 2px;
+  width: 80px;
+}
+
+.notifyjs-response-base {
+  opacity: 0.85;
+  width: 300px;
+  background: #F5F5F5;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.notifyjs-response-base .title {
+  width: 170px;
+  float: left;
+  margin: 10px 0 0 10px;
+  text-align: right;
+}
+
+.notifyjs-response-base .buttons {
+  width: 100px;
+  float: right;
+  font-size: 11px;
+  padding: 5px;
+  margin: 2px;
+}
+
+.notifyjs-response-base button {
+  font-size: 11px;
+  padding: 5px;
+  margin: 2px;
+  width: 80px;
+}

@@ -2,6 +2,10 @@ const MUST_FLY_TO_CURRENT_POS = false;
 
 const urlParams = new URLSearchParams(window.location.search);
 const target_wp = urlParams.has("towp") ? parseInt(urlParams.get('towp')) : null;
+
+const lat = urlParams.has("lat") ? parseFloat(urlParams.get('lat')) : null;
+const lng = urlParams.has("lng") ? parseFloat(urlParams.get('lng')) : null;
+const friend_description = urlParams.has("friend") ? urlParams.get('friend') : null;
 let computeFirstRoute = false;
 
 var mymap = L.map('mapid', {
@@ -21,7 +25,25 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: 'pk.eyJ1IjoiYWF2ZW5kYW4iLCJhIjoiY2p3NnVzdHozMjdxeDQzcXBnYjlwMTRqcyJ9.S00xReWyD9_Eb4B1h-VgIg'
 }).addTo(mymap);
 
+var greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+var redIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 var markers;
+var trueMarkers = [];
 var areas;
 
 $(document).ready(function() {
@@ -37,7 +59,11 @@ $(document).ready(function() {
         let marker = L.marker([markers[k][0], markers[k][1]]).addTo(mymap);
         marker.bindPopup("<p>" + markers[k][2] + "</p>" +
           "<p><a href='#mapid' onclick='computeShortestRoute(" + k + ")'>Ver ruta</a></p>");
+        trueMarkers.push(marker);
       }
+      mymap.fitBounds(new L.featureGroup(trueMarkers).getBounds(), {
+        padding: L.point(20, 20)
+      });
       for (let k in areas) {
         let circle = L.circle([areas[k][0], areas[k][1]], {
           color: 'red',
@@ -66,14 +92,21 @@ $(document).ready(function() {
       }
     }
   });
+
+  // Add friend marker if present
+  if (lat != null) {
+    let m = L.marker([lat, lng], {
+      icon: redIcon
+    }).addTo(mymap);
+    m.bindPopup("<p>" + friend_description + " está aquí</p>");
+    trueMarkers.push(m);
+  }
 });
 
-var myCurrPosMarker = L.circle([0, 0], {
-  color: "green",
-  fillColor: "green",
-  fillOpacity: 1,
-  radius: 3
+var myCurrPosMarker = L.marker([0, 0], {
+  icon: greenIcon
 }).addTo(mymap);
+myCurrPosMarker.bindPopup("Usted está aquí");
 var myCurrPosMarkerPrecision = L.circle([0, 0], {
   color: "green",
   fillColor: "green",

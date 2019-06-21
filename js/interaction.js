@@ -78,8 +78,8 @@ $(document).ready(function() {
           row.show();
           row.attr("data-index", c);
           row.attr("onclick", "changeTargetClass(" + c + ")");
-          $("td:nth-child(2)",row).html(cls[c].NOMBRE);
-          $("td:nth-child(3)",row).html(cls[c].HORA);
+          $("td:nth-child(2)", row).html(cls[c].NOMBRE);
+          $("td:nth-child(3)", row).html(cls[c].HORA);
           $("table").append(row);
           classes[c] = cls[c];
         }
@@ -101,10 +101,179 @@ $(document).ready(function() {
   $("#uploadCalForm").submit(function(event) {
     event.preventDefault();
     console.log("Uploading cal");
-    // TODO Call API endpoint /upload_my_calendar, pass username&password on data, pass file 
+    // TODO Call API endpoint /upload_my_calendar, pass username&password on data, pass file
 
     $("#uploadCalModal").modal("hide");
 
     //location.reload(); // Force reload page to reload table (when required)
   });
 });
+
+var notifiedRequest = null;
+var notifiedResponses = {};
+
+$(document).ready(function() {
+  $.notify.defaults({
+    className: "info"
+  });
+  $.notify.addStyle('request', {
+    html: "<div>" +
+      "<div class='clearfix'>" +
+      "<div class='title' data-notify-html='title'/>" +
+      "<div class='buttons'>" +
+      "<button class='no'>Denegar</button>" +
+      "<button class='yes' data-notify-text='button'></button>" +
+      "</div>" +
+      "</div>" +
+      "</div>"
+  });
+  $.notify.addStyle('response', {
+    html: "<div>" +
+      "<div class='clearfix'>" +
+      "<div class='title' data-notify-html='title'/>" +
+      "<div class='buttons'>" +
+      "<button class='no'>Cerrar</button>" +
+      "<button class='yes' data-notify-text='button'></button>" +
+      "</div>" +
+      "</div>" +
+      "</div>"
+  });
+  //listen for click events from this style
+  $(document).on('click', '.notifyjs-request-base .no', function() {
+    //programmatically trigger propagating hide event
+    denyRequest();
+    $(this).trigger('notify-hide');
+  });
+  $(document).on('click', '.notifyjs-request-base .yes', function() {
+    acceptRequest();
+    //hide notification
+    $(this).trigger('notify-hide');
+  });
+  //listen for click events from this style
+  $(document).on('click', '.notifyjs-response-base .no', function() {
+    //programmatically trigger propagating hide event
+    $(this).trigger('notify-hide');
+  });
+  $(document).on('click', '.notifyjs-response-base .yes', function() {
+    console.log($(this));
+    showOnMap(($(".title", $(this).parent().parent())).text()); // HACK: get text from notification
+    //hide notification
+    $(this).trigger('notify-hide');
+  });
+
+  // Call /poll endpoint every 10 seconds
+  setInterval(function() {
+    var user = sessionStorage.getItem("user");
+    if (user != null) {
+      user = JSON.parse(user);
+    } else {
+      return;
+    }
+
+    $.ajax({
+      url: "https://fathomless-tor-48974.herokuapp.com/poll",
+      method: "POST",
+      data: {
+        "username": user.EMAIL,
+        "password": user.PASSWORD,
+      },
+      success: function(data, status) {
+        let pos_requests = data.requests;
+        for (let pr of pos_requests) {
+          notifyRequest(pr);
+        }
+        let pos_responses = data.responses;
+        for (let pr of pos_responses) {
+          notifyResponse(pr);
+        }
+      }
+    });
+  }, 10000);
+});
+
+function notifyRequest(request) {
+  notifiedRequest = request;
+  $.notify({
+    title: request.CREADOR_EMAIL + " quiere saber tu ubicación.",
+    button: 'Aceptar'
+  }, {
+    style: 'request',
+    autoHide: false,
+    clickToHide: false
+  });
+}
+
+function denyRequest() {
+  if (notifiedRequest == null) {
+    return;
+  }
+  var user = sessionStorage.getItem("user");
+  if (user != null) {
+    user = JSON.parse(user);
+  } else {
+    return;
+  }
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/publish_my_position",
+    method: "POST",
+    data: {
+      "username": user.EMAIL,
+      "password": user.PASSWORD,
+      "friend_email": notifiedRequest.CREADOR_EMAIL,
+      "decision": "REJECT",
+      "latitude": -1,
+      "longitude": -1
+    },
+  })
+}
+
+// myCurrentPos comes from script.js
+function acceptRequest() {
+  if (notifiedRequest == null) {
+    return;
+  }
+  if (myCurrentPos == null) {
+    alert("¡No hay una posición establecida! No se puede compartir ubicación.");
+    return;
+  }
+
+  var user = sessionStorage.getItem("user");
+  if (user != null) {
+    user = JSON.parse(user);
+  } else {
+    return;
+  }
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/publish_my_position",
+    method: "POST",
+    data: {
+      "username": user.EMAIL,
+      "password": user.PASSWORD,
+      "friend_email": notifiedRequest.CREADOR_EMAIL,
+      "decision": "ACCEPT",
+      "latitude": myCurrentPos.coords.latitude,
+      "longitude": myCurrentPos.coords.longitude
+    },
+  })
+}
+
+function notifyResponse(response) {
+  notifiedResponses[response.OBJETIVO_EMAIL] = response;
+  $.notify({
+    title: response.OBJETIVO_EMAIL + " te ha enviado su ubicación.",
+    button: 'Ver'
+  }, {
+    style: 'response',
+    autoHide: false,
+    clickToHide: false
+  });
+}
+
+function showOnMap(text) {
+  const email = text.split(" ")[0];
+  const response = notifiedResponses[email];
+  console.log(response);
+
+  window.location.href = "index.html?lat=" +
+    response.LATITUD + "&lng=" + response.LONGITUD + "&friend=" + email;
+}
