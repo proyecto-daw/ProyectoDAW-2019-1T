@@ -1,6 +1,21 @@
 var EVENTS = {};
+var WAYPOINTS = {};
+
+var app;
 
 $(document).ready(function() {
+  app = new Vue({
+    el: '#content',
+    data: {
+      events: {}
+    },
+    methods: {
+      format(x) {
+        return moment(x).format('MMMM D YYYY, h:mm A');
+      }
+    }
+  });
+
   $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
     icons: {
       time: 'far fa-clock',
@@ -26,28 +41,59 @@ $(document).ready(function() {
     return;
   }
 
+  var arr = [];
+
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/waypoints",
+    method: "GET",
+    success: function(data, status) {
+      WAYPOINTS = data.waypoints;
+      for (let w in WAYPOINTS) {
+        console.log(w, WAYPOINTS[w]);
+        arr.push({
+          val: w,
+          text: WAYPOINTS[w][2]
+        });
+      }
+
+      let dropdown_cell = $('#edit-row td:nth-child(4)');
+      var sel = $('<select id="inputClosestWp" required class="form-control">');
+      dropdown_cell.append(sel);
+      $(arr).each(function() {
+        sel.append($("<option>").attr('value', this.val).text(this.text));
+      });
+      sel.append("<option value='' selected disabled hidden>Escoja un waypoint</option>");
+
+      fillEvents();
+    }
+  });
+});
+
+function fillEvents() {
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/events",
     method: "GET",
     success: function(data, status) {
       let events = data.events;
       EVENTS = events;
-      for (let e in events) {
-        var row = $("tr#event-template").clone().removeAttr("id");
-        row.show();
-        $("th:nth-child(1)", row).html(e);
-        $("td:nth-child(2)", row).html(events[e][0]);
-        $("td:nth-child(3)", row).html(events[e][1]);
-        $("td:nth-child(4)", row).html(events[e][2]);
-        $("td:nth-child(5)", row).html(moment(events[e][3]).format('MMMM D YYYY, h:mm A'));
-        row.click({
-          "id": e
-        }, rowClicked);
-        $("table").prepend(row);
-      }
+      app.events = EVENTS;
+      app.waypoints = WAYPOINTS;
+      // for (let e in events) {
+      //   var row = $("tr#event-template").clone().removeAttr("id");
+      //   row.show();
+      //   $("th:nth-child(1)", row).html(e);
+      //   $("td:nth-child(2)", row).html(events[e][0]);
+      //   $("td:nth-child(3)", row).html(events[e][1]);
+      //   $("td:nth-child(4)", row).html(WAYPOINTS[events[e][2]][2]);
+      //   $("td:nth-child(5)", row).html(moment(events[e][3]).format('MMMM D YYYY, h:mm A'));
+      //   row.click({
+      //     "id": e
+      //   }, rowClicked);
+      //   $("table").prepend(row);
+      // }
     }
   });
-});
+}
 
 var lastButtonClicked;
 
@@ -65,12 +111,12 @@ $(document).ready(function() {
   });
 });
 
-function rowClicked(event) {
-  let ev = EVENTS[event.data.id];
-  $("span#targetId").text(event.data.id);
+function rowClicked(id) {
+  let ev = EVENTS[id];
+  $("span#targetId").text(id);
   $("input#inputName").val(ev[0]);
   $("input#inputPlace").val(ev[1]);
-  $("input#inputClosestWp").val(ev[2]);
+  $("select").val(ev[2]);
   $('#datetimepicker1').datetimepicker('date', moment(ev[3]));
 }
 
@@ -94,6 +140,7 @@ function submitEdit(event) {
 
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/api_admin/new_or_edit_event",
+    // url: "http://localhost:8000/api_admin/new_or_edit_event",
     method: "POST",
     data: {
       "username": user.EMAIL,
@@ -102,7 +149,7 @@ function submitEdit(event) {
         [targetId]: [
           $("input#inputName").val(),
           $("input#inputPlace").val(),
-          $("input#inputClosestWp").val(),
+          $("select#inputClosestWp").val(),
           $('#datetimepicker1').data("datetimepicker").date().format(),
         ]
       })

@@ -70,7 +70,7 @@
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
           <i class="fa fa-question"></i>
-          <span> Que hacemos </span></a>
+          <span> Qué hacemos </span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -164,47 +164,38 @@
                     <td scope="col">ID</td>
                     <td scope="col">Nombre</td>
                     <td scope="col">Lugar</td>
-                    <td scope="col">ID de waypoint más cercano</td>
+                    <td scope="col">Waypoint más cercano</td>
                     <td scope="col">Fecha y hora de inicio</td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr id="event-template" style="display: none!important">
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr v-for="(v,k) in events" v-on:click="rowClicked(k)">
+                    <th scope="row">{{k}}</th>
+                    <td>{{v[0]}}</td>
+                    <td>{{v[1]}}</td>
+                    <td>{{waypoints[v[2]][2]}}</td>
+                    <td>{{format(v[3])}}</td>
                   </tr>
-                  <tr>
-                    <form id="form">
-                      <th scope="row"><span id="targetId">*</span></th>
-                      <td><input id="inputName" class="form-control" type="text" required></td>
-                      <td><input id="inputPlace" class="form-control" type="text" required></td>
-                      <td><input id="inputClosestWp" class="form-control" type="number" required></td>
-                      <td>
-                        <div class="form-group">
-                          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                            <input id="inputDate" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
-                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
+                  <tr id="edit-row">
+                    <th scope="row"><span id="targetId">*</span></th>
+                    <td><input form="form" id="inputName" class="form-control" type="text" required></td>
+                    <td><input form="form" id="inputPlace" class="form-control" type="text" required></td>
+                    <td></td>
+                    <td>
+                      <div class="form-group">
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                          <input required form="form" id="inputDate" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
                         </div>
-                        <!-- <div id="datetimepicker" class="input-group">
-                          <input id="inputDate" data-format="MM/dd/yyyy HH:mm:ss PP" class="form-control" type="text" required></input>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="fa fa-clock">
-                              </i>
-                            </span>
-                          </div>
-                        </div> -->
-                      </td>
-                    </form>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
+
+              <form id="form"></form>
 
               <p>Haga clic sobre un evento para editarlo.</p>
               <p>Haga clic <a href="admin-places.html" target="_blank">aquí</a> para ver la lista de IDs de los waypoints.</p>
@@ -213,80 +204,81 @@
                 <input type="submit" form="form" id="submitDelete" value="Eliminar" class="btn btn-danger">
               </p>
             </div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer ">
-          <div class=" py-2 container my-auto">
-            <div class="copyright text-center my-auto">
-              Contáctenos: <a href="#">@NexusMap</a>
-            </div>
-          </div>
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto ">
-              <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
-              <a class="px-5" href=team.html>Equipo</a>
-              <a class="px-5" href=news.html>Noticias</a>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-
-      </div>
-      <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
           </div>
         </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer ">
+        <div class=" py-2 container my-auto">
+          <div class="copyright text-center my-auto">
+            Contáctenos: <a href="#">@NexusMap</a>
+          </div>
+        </div>
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto ">
+            <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
+            <a class="px-5" href=team.html>Equipo</a>
+            <a class="px-5" href=news.html>Noticias</a>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Tempus Dominus (prev. Eonasdan/bootstrap-datetimepicker) plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  <!-- Tempus Dominus (prev. Eonasdan/bootstrap-datetimepicker) plugin -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
-    <script src="js/base.js"></script>
-    <script src="js/admin-events-script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/base.js"></script>
+  <script src="js/admin-events-script.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
 </body>
 

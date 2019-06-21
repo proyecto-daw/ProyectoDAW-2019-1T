@@ -1,4 +1,5 @@
 var WAYPOINTS = {};
+var app;
 
 $(document).ready(function() {
   var user = sessionStorage.getItem("user");
@@ -8,28 +9,19 @@ $(document).ready(function() {
     return;
   }
 
+  app = new Vue({
+    el: '#content',
+    data: {
+      waypoints: {}
+    }
+  });
+
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/waypoints",
     method: "GET",
     success: function(data, status) {
-      let waypoints = data.waypoints;
-      WAYPOINTS = waypoints;
-      for (let w in waypoints) {
-        var row = $("tr#waypoint-template").clone().removeAttr("id");
-        row.show();
-        $("th:nth-child(1)", row).html(w);
-        $("td:nth-child(2)", row).html(waypoints[w][0]);
-        $("td:nth-child(3)", row).html(waypoints[w][1]);
-        $("td:nth-child(4)", row).html(waypoints[w][2]);
-        row.click({
-          "id": w
-        }, rowClicked);
-        // $("td:nth-child(6)", row).click({
-        //   "id": users[u].ID,
-        //   "email": users[u].EMAIL
-        // }, lockUnlockUser);
-        $("table").prepend(row);
-      }
+      WAYPOINTS = data.waypoints;
+      app.waypoints = WAYPOINTS;
     }
   });
 });
@@ -52,9 +44,9 @@ $(document).ready(function() {
   });
 });
 
-function rowClicked(event) {
-  let waypoint = WAYPOINTS[event.data.id];
-  $("span#targetId").text(event.data.id);
+function rowClicked(id) {
+  let waypoint = WAYPOINTS[id];
+  $("span#targetId").text(id);
   $("input#inputLat").val(waypoint[0]);
   $("input#inputLong").val(waypoint[1]);
   $("input#inputName").val(waypoint[2]);

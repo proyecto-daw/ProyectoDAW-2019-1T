@@ -71,7 +71,7 @@
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
           <i class="fa fa-question"></i>
-          <span> Que hacemos </span></a>
+          <span>Qué hacemos </span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -169,11 +169,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr id="waypoint-template" style="display: none!important">
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr v-for="(v,k) in waypoints" v-on:click="rowClicked(k)">
+                    <th scope="row">{{k}}</th>
+                    <td>{{v[0]}}</td>
+                    <td>{{v[1]}}</td>
+                    <td>{{v[2]}}</td>
                   </tr>
                   <tr>
                     <form id="form">
@@ -188,8 +188,8 @@
 
               <p>Haga clic sobre un lugar para editarlo.</p>
               <p>
-              <input type="submit" form="form" id="submitEdit" value="Guardar" class="btn btn-success"></input>
-              <input type="submit" form="form" id="submitDelete" value="Eliminar" class="btn btn-danger"></input>
+                <input type="submit" form="form" id="submitEdit" value="Guardar" class="btn btn-success"></input>
+                <input type="submit" form="form" id="submitDelete" value="Eliminar" class="btn btn-danger"></input>
               </p>
             </div>
           </div>
@@ -254,6 +254,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="js/base.js"></script>
     <script src="js/admin-places-script.js"></script>
 

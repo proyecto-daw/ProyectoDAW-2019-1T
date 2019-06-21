@@ -71,7 +71,7 @@
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
           <i class="fa fa-question"></i>
-          <span> Que hacemos </span></a>
+          <span>Qué hacemos </span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -171,13 +171,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr id="user-template" style="display: none!important">
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr v-for="(v,k) in users">
+                    <th scope="row">{{v.ID}}</th>
+                    <td>{{v.USERNAME}}</td>
+                    <td>{{v.EMAIL}}</td>
+                    <td>{{fullName(v)}}</td>
+                    <td><span v-bind:class="[isAdmin(v) ? 'fa-check' : 'fa-times', 'fa']" v-on:click="adminUnadminUser(v)"></span></td>
+                    <td><span v-bind:class="[isBlocked(v) ? 'fa-check' : 'fa-times', 'fa']" v-on:click="lockUnlockUser(v)"></span></td>
                   </tr>
                   <!-- <tr>
                     <th scope="row"><span id="targetId">-1</span></th>
@@ -205,69 +205,70 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-        </div>
-        <!-- Footer -->
-        <footer class="sticky-footer ">
-          <div class=" py-2 container my-auto">
-            <div class="copyright text-center my-auto">
-              Contáctenos: <a href="#">@NexusMap</a>
-            </div>
-          </div>
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto ">
-              <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
-              <a class="px-5" href=team.html>Equipo</a>
-              <a class="px-5" href=news.html>Noticias</a>
-            </div>
-           </div>
-        </footer>
-        <!-- End of Footer -->
-
       </div>
-      <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
+      <!-- Footer -->
+      <footer class="sticky-footer ">
+        <div class=" py-2 container my-auto">
+          <div class="copyright text-center my-auto">
+            Contáctenos: <a href="#">@NexusMap</a>
           </div>
         </div>
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto ">
+            <a class="px-5" href=aboutus.html>Acerca de nosotros</a>
+            <a class="px-5" href=team.html>Equipo</a>
+            <a class="px-5" href=news.html>Noticias</a>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Cerrar sesi&oacute;n?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Confirme si desea cerrar su sesi&oacute;n.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="#">Cerrar sesi&oacute;n</a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
-    <script src="js/base.js"></script>
-    <script src="js/admin-users-script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/base.js"></script>
+  <script src="js/admin-users-script.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
 </body>
 
