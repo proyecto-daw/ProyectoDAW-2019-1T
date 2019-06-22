@@ -152,6 +152,7 @@ window.setInterval(function() {
 }, 2000);
 
 var route = null;
+var toFirstWpRoute = null;
 
 function computeShortestRoute(destinyId) {
   let destinyWp = markers["" + destinyId];
@@ -160,22 +161,36 @@ function computeShortestRoute(destinyId) {
     return;
   }
 
-  var bestStart = getClosestWp(myCurrentPos);
+  var bestStart = getClosestWpIndex(myCurrentPos);
 
-  var latlngs = toLatLong(dijkstra(markers[1], destinyWp))
+  var x = dijkstra(bestStart, destinyId);
+  var latlngs = toLatLong(x[0]);
+  if (toFirstWpRoute != null) {
+    toFirstWpRoute.remove();
+  }
   if (route != null) {
     route.remove();
   }
-  route = L.polyline(latlngs, {
-    color: 'red'
+  toFirstWpRoute = L.polyline([
+    [myCurrentPos.coords.latitude, myCurrentPos.coords.longitude], latlngs[0]
+  ], {
+    color: 'red',
+    dashArray: "10,15",
+    weight: 5
   }).addTo(mymap);
-  route.bindPopup("Route: x minutes");
+  toFirstWpRoute.bindPopup("Vaya hasta " + markers[bestStart][2]);
+  route = L.polyline(latlngs, {
+    color: 'red',
+    weight: 5
+  }).addTo(mymap);
+  route.bindPopup("Distancia: " + x[1] + " metros");
   // zoom the map to the polyline
   mymap.fitBounds(route.getBounds());
+  toFirstWpRoute.redraw();
   route.redraw();
 }
 
-function getClosestWp(pos) {
+function getClosestWpIndex(pos) {
   let shortestDist = Infinity;
   let closestWp = null;
   for (let wp in markers) {
@@ -187,9 +202,7 @@ function getClosestWp(pos) {
     );
     if (dist < shortestDist) {
       shortestDist = dist;
-      closestWp = {
-        [wp]: markers[wp]
-      };
+      closestWp = wp;
     }
   }
   return closestWp;
@@ -200,20 +213,72 @@ function distance(lat1, lng1, lat2, lng2) {
   return Math.sqrt(Math.pow((lat1 - lat2), 2) + Math.pow((lng1 - lng2), 2));
 }
 
-// TODO Implement Dijkstra!
-function dijkstra(startNode, endNode) {
-  var nodes = [startNode];
+function dijkstra(startIndex, endIndex) {
+  var L = {};
+  L[startIndex] = [0, null];
 
-  nodes.push(endNode);
+  var unknownMaxDistances = [];
+  for (let m in markers) {
+    unknownMaxDistances.push(parseInt(m));
+    if (m != startIndex) {
+      L[m] = [Infinity, null];
+    }
+  }
 
-  return nodes;
+  while (unknownMaxDistances.includes(endIndex)) {
+    let targetId = findMinUnknown(L, unknownMaxDistances);
+    unknownMaxDistances.splice(unknownMaxDistances.indexOf(targetId), 1);
+    var neighbors = getNeighbors(targetId);
+    for (let neighbor of neighbors) {
+      //neighbor[0] is ID, neighbor[1] is weight
+      L[neighbor[0]][0] = Math.min(L[neighbor[0]][0], (L[targetId][0] == Infinity ? 0 : L[targetId][0]) + neighbor[1]);
+      L[neighbor[0]][1] = L[neighbor[0]][0] < (L[targetId][0] + neighbor[1]) ? L[neighbor[0]][1] : targetId;
+    }
+  }
+
+  // Now L contains enouch info to reconstruct the route
+  return [buildRoute(L, endIndex, startIndex), L[endIndex][0]];
+}
+
+function findMinUnknown(distances, unknowns) {
+  let minSeen = Infinity;
+  let minIndex = -1;
+  for (let i of unknowns) {
+    if (distances[i][0] <= minSeen) {
+      minSeen = distances[i][0];
+      minIndex = i;
+    }
+  }
+  return minIndex;
+}
+
+function getNeighbors(x) {
+  var neighbors = [];
+  for (let y of markers[x][3]) {
+    neighbors.push(y);
+  }
+  return neighbors;
+}
+
+function buildRoute(L, endIndex, startIndex) {
+  var route = [endIndex];
+
+  var prev_index = endIndex;
+  while (prev_index != parseInt(startIndex)) {
+    prev_index = L[prev_index][1];
+    route.push(prev_index);
+  }
+
+
+  return route.reverse();
 }
 
 function toLatLong(nodes) {
   var toReturn = [];
 
   for (let node of nodes) {
-    toReturn.push([node[0], node[1]]);
+    var trueNode = markers[node];
+    toReturn.push([trueNode[0], trueNode[1]]);
   }
 
   return toReturn;
