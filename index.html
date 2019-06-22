@@ -105,11 +105,11 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque puntos de interés aquí" data-step="1">
+          <form v-on:submit.prevent="searchPlacesA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque puntos de interés aquí" data-step="1">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="searchPlacesA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -126,11 +126,11 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
+                <form v-on:submit.prevent="searchPlacesB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="searchPlacesB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -141,7 +141,7 @@
 
             <li class="nav-item" id="admin-button" style="display: none;">
               <a class="nav-link" href="admin.html">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                 <i class="fas fa-cog"></i>
               </a>
             </li>
@@ -172,21 +172,37 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="px-5 mx-5">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Inicio</h1>
 
-          <section>
-            <h2 class="mb-2">¿Qué hay aquí?</h2>
-            En esta página se puede:
-            <ul>
-              <li>Ver y buscar sitios de interés</li>
-              <li>Ver instrucciones para llegar a un sitio</li>
-              <li>Ver la lista de clases de hoy y el tiempo que falta para cada una</li>
-            </ul>
-            Revise la <a href="#" onclick="introJs().start()">visita guiada</a> para más detalles.
-          </section>
+          <div id="welcome" class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Bienvenido a Inicio</h6>
+              <div class="dropdown no-arrow">
+                <a id="close-well" href="#" class="btn btn-danger btn-circle btn-sm">
+                  <i class="fa fa-minus"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col mr-6">
+                  <h2 class="h4 mb-1 text-gray-800">¿Qué hay aquí?</h2>
+                  En esta página se puede:
+                  <ul>
+                    <li>Ver y buscar sitios de interés</li>
+                    <li>Ver instrucciones para llegar a un sitio</li>
+                    <li>Ver la lista de clases de hoy y el tiempo que falta para cada una</li>
+                  </ul>
+                  Revisa la <a href="#" onclick="introJs().start()">visita guiada</a> para más detalles.
+                </div>
+              </div>
+            </div>
+          </div>
 
           <section id="googlemap" data-intro="Este es el mapa. Contiene su ubicación actual y puntos de interés." data-step="2">
             <h2 class="mb-2">Mapa</h2>
@@ -292,7 +308,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <input type="submit" class="btn btn-primary" form="uploadCalForm" value="Subir"/>
+          <input type="submit" class="btn btn-primary" form="uploadCalForm" value="Subir" />
         </div>
       </div>
     </div>
@@ -327,6 +343,7 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <!-- notify.js library -->
   <script src="js/notify.min.js"></script>
   <script src="js/interaction.js"></script>

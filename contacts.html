@@ -11,16 +11,18 @@
 
   <title>NexusMap</title>
 
-  <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.css" rel="stylesheet">
 
-  <!--link para estilos--->
+  <!--link para estilos -->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
 
+  <!-- intro.JS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css" integrity="sha256-/oZ7h/Jkj6AfibN/zTWrCoba0L+QhP9Tf/ZSgyZJCnY=" crossorigin="anonymous" />
 </head>
 
 <body id="page-top">
@@ -99,11 +101,11 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <form v-on:submit.prevent="filterTextA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -120,11 +122,11 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
+                <form v-on:submit.prevent="filterTextB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -166,7 +168,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="mx-5 px-5">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Contactos</h1>
@@ -185,11 +187,10 @@
             <div class="card-body">
               <div class="row">
                 <div class="col mr-6">
-                  <h2 class="mb-1">Desde aqui podrás:</h2>
+                  <h2 class="h4 mb-1 text-gray-800">Desde aquí podrás:</h2>
                   <ul>
                     <li>Buscar a tus amigos con cuenta en NexusMap.</li>
-                    <li>Tener un acceso rapido a tus amigos.</li>
-                    <li>Ver los grupos en los que formas parte.</li>
+                    <li>Buscar a tus amigos en el mapa.</li>
 
                   </ul>
                 </div>
@@ -201,236 +202,41 @@
           </div>
 
           <!-- Contacts generales -->
-          <div id="cuerpo-login" class="row">
+          <div v-if="loggedIn" id="cuerpo-login" class="row">
             <!-- Columna Izquierda -->
             <div class="col-lg-8">
 
               <!-- Basic Card Example -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Resultados(12)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
                 </div>
                 <div class="card-body">
-                  <div class="row">
-
+                  <div v-if="!anyResults && !searched" class="alert alert-primary">
+                    Haz una búsqueda para ver resultados aquí.
+                  </div>
+                  <div v-if="!anyResults && searched" class="alert alert-warning">
+                    ¡No hay personas que coincidan con la búsqueda!
+                  </div>
+                  <div v-if="anyResults" class="row">
                     <!-- Profile Card Example -->
-                    <div class="col-lg-6">
+                    <div v-for="u in results" class="col-lg-6 my-2">
                       <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
+                              <div class="font-weight-bold text-primary mb-3">{{u.NAMES+" "+u.LASTNAMES}}</div>
                             </div>
                             <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
+                              <a v-on:click="makeFriend(u)" href="#">
+                                <i class="fas fa-user-plus fa-2x"></i>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valessca Rodriguez</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Moon</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Rodrigo Valencia</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">The Ancient Mariner</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Ricardo Velez</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valeria Morales</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerie Luna</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-11">
-                              <img class="img-user rounded-circle" src="img/user-female-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valentina Cruz</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-12">
-                              <img class="img-user rounded-circle" src="img/user-male-small.jpg">
-                            </div>
-                            <div class="col mr-11">
-                              <div class="text-xs font-weight-bold text-primary  mb-3">Valerion Black</div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-user-plus fa-2x text-red-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- add another Profile-->
+                    <!-- End Profile Card -->
                   </div>
                 </div>
               </div>
@@ -448,7 +254,8 @@
                 <div class="collapse show" id="collapseCardFriends">
                   <div class="card-body">
                     <!-- Add here Groups Cards. -->
-                    <div style="display:none!important" id="friend-template" class="col-lg-12">
+                    <div v-if="!anyFriends" class="alert alert-warning">No tienes amigos :(</div>
+                    <div v-for="f in friends" class="col-lg-12">
                       <div class="card border-left-primary shadow h-100 py-2 my-2">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
@@ -456,10 +263,10 @@
                               <img class="img-user rounded-circle" src="img/user-female-small.jpg">
                             </div> -->
                             <div class="col mr-11">
-                              <div class="font-weight-bold text-primary "></div>
+                              <div class="font-weight-bold text-primary ">{{f.NAMES + " " + f.LASTNAMES}}</div>
                             </div>
                             <div class="col-auto">
-                              <a class="search-friend" href="#">
+                              <a v-on:click="locate(f.EMAIL)" class="search-friend" href="#">
                                 <i class="fas fa-search-location fa-2x"></i>
                               </a>
                             </div>
@@ -473,7 +280,7 @@
             </div>
           </div>
           <!-- /.En caso de no Estar logeado -->
-          <div id='logout' class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de contactos!</div>
+          <div v-if="!loggedIn" class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de contactos!</div>
           <!-- /.container-fluid -->
         </div>
       </div>
@@ -538,6 +345,7 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="js/notify.min.js"></script>
   <script src="js/base.js"></script>
   <script src="js/contacts-scripts.js"></script>

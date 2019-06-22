@@ -1,31 +1,156 @@
+var app;
+var user;
+
 $(document).ready(function() {
-  var user = sessionStorage.getItem("user");
+  user = sessionStorage.getItem("user");
   if (user != null) {
     user = JSON.parse(user);
-  } else {
-    $("section#mis-eventos ul").hide(); // Hide "Mis eventos" from document
-    $("section#mis-eventos").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de eventos y guardar eventos!</div>");
+  }
 
-    $(".hide-if-not-logged").hide();
+  $("#close-well").click(function() {
+    $("#welcome").slideUp();
+    window.localStorage.setItem("showBannerEvents", "no");
+  });
+  if (localStorage.getItem("showBannerEvents")) {
+    $("#welcome").hide();
+  }
+
+  app = new Vue({
+    el: '#content',
+    data: {
+      events: {},
+      myEvents: {}
+    },
+    computed: {
+      noEvents: function() {
+        return Object.keys(this.events).length == 0;
+      },
+      loggedIn: function() {
+        return user != null;
+      },
+      noMyEvents: function() {
+        return Object.keys(this.myEvents).length == 0;
+      }
+    },
+    methods: {
+      prettyDate: function(d) {
+        return moment(d).format('MMMM D YYYY, h:mm A')
+      },
+      link: function(ev) {
+        return "index.html?towp=" + ev[2];
+      },
+      filterDate: function() {
+        let filtered = {};
+
+        let start = $("input#from").val();
+        if (start == "") {
+          getEvents();
+          return;
+        } else {
+          start = new Date(start);
+        }
+
+        let end = $("input#to").val();
+        if (end == "") {
+          getEvents();
+          return;
+        } else {
+          end = new Date(end);
+        }
+
+        for (let e in this.events) {
+          let eventDate = new Date(this.events[e][3]);
+          if ((eventDate >= start) && (eventDate <= end)) {
+            filtered[e] = this.events[e];
+          }
+        }
+        this.events = filtered;
+      },
+      filterTextA: function() {
+        this.filterText($("input#filterTextA").val());
+      },
+      filterTextB: function() {
+        this.filterText($("input#filterTextB").val());
+      },
+      filterText: function(text) {
+        if (text == "") {
+          getEvents();
+          return;
+        }
+
+        let filtered = {};
+        for (let e in this.events) {
+          if (this.events[e][0].toLowerCase().includes(text.toLowerCase())) {
+            filtered[e] = this.events[e]
+          }
+        }
+        this.events = filtered;
+      },
+      saveEv: function(i, ev) {
+        saveEvent(i, ev);
+      },
+      deleteEv: function(i) {
+        deleteEvent(i);
+      }
+    }
+  });
+
+  getEvents();
+  if (user != null) {
+    getMyEvents();
   }
 });
 
-$(document).ready(function() {
+function getEvents() {
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/events",
     method: "GET",
     success: function(data, status) {
-      var events=data.events;
-      for(let e in events){
-        var card=$("li#template-event").clone().removeAttr("id");
-        card.show();
-        
-        $("h4 span", card).html(events[e][0]);
-        $("p", card).text(events[e][1]);
-        $("div>small", card).text(moment(events[e][3]).format('MMMM D YYYY, h:mm A'));
-        $(".goto-link", card).attr("href","index.html?towp="+ events[e][2]);
-        $("div#all_events ul").append(card);
-      }
+      app.events = data.events;
     }
   });
-});
+}
+
+function getMyEvents() {
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/get_my_events",
+    method: "POST",
+    data: {
+      "username": user.EMAIL,
+      "password": user.PASSWORD
+    },
+    success: function(data, status) {
+      app.myEvents = data.events;
+    }
+  });
+}
+
+function saveEvent(id, ev) {
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/add_my_event",
+    method: "POST",
+    data: {
+      "username": user.EMAIL,
+      "password": user.PASSWORD,
+      "event": id
+    },
+    success: function(data, status) {
+      app.$set(app.myEvents, id, ev);
+    }
+  });
+}
+
+function deleteEvent(id) {
+  $.ajax({
+    url: "https://fathomless-tor-48974.herokuapp.com/remove_my_event",
+    method: "POST",
+    data: {
+      "username": user.EMAIL,
+      "password": user.PASSWORD,
+      "event": id
+    },
+    success: function(data, status) {
+      app.$delete(app.myEvents, id);
+    }
+  });
+}
