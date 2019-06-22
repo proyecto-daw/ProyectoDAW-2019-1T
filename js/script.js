@@ -58,7 +58,7 @@ $(document).ready(function() {
       for (let k in markers) {
         let marker = L.marker([markers[k][0], markers[k][1]]).addTo(mymap);
         marker.bindPopup("<p>" + markers[k][2] + "</p>" +
-          "<p><a href='#mapid' onclick='computeShortestRoute(" + k + ")'>Ver ruta</a></p>");
+          "<p><a href='#mapid' onclick='computeShortestRoute(" + k + ")'>¿Cómo llegar?</a></p>");
         trueMarkers.push(marker);
       }
       mymap.fitBounds(new L.featureGroup(trueMarkers).getBounds(), {

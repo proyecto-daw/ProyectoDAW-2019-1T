@@ -59,8 +59,47 @@ window.setInterval(function() {
   refreshCheckboxes();
 }, 5000); // Update the different "state" checkboxes every 5 secs
 
+var app;
+var user;
+
 $(document).ready(function() {
-  var user = sessionStorage.getItem("user");
+  $("#close-well").click(function() {
+    $("#welcome").slideUp();
+    window.localStorage.setItem("showBannerIndex", "no");
+  });
+  if (localStorage.getItem("showBannerIndex")) {
+    $("#welcome").hide();
+  }
+
+  $.notify.defaults({
+    className: "info"
+  });
+
+  app = new Vue({
+    el: 'nav',
+    methods: {
+      searchPlacesA: function() {
+        this.searchPlaces($("input#searchPlacesA").val());
+      },
+      searchPlacesB: function() {
+        this.searchPlaces($("input#searchPlacesB").val());
+      },
+      searchPlaces: function(text) {
+        let foundOne = false;
+        for (let m in markers) {
+          if (markers[m][2].toLowerCase().includes(text.toLowerCase())) {
+            window.location.href = "index.html?towp=" + m;
+            foundOne = true;
+          }
+        }
+        if (!foundOne) {
+          alert("¡No existen puntos de interés para la búsqueda " + text + "!");
+        }
+      }
+    }
+  });
+
+  user = sessionStorage.getItem("user");
   if (user != null) {
     user = JSON.parse(user);
 
@@ -113,9 +152,6 @@ var notifiedRequest = null;
 var notifiedResponses = {};
 
 $(document).ready(function() {
-  $.notify.defaults({
-    className: "info"
-  });
   $.notify.addStyle('request', {
     html: "<div>" +
       "<div class='clearfix'>" +

@@ -13,25 +13,25 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-  <!--Aplicar iconos de google-->
+  <!--Aplicar iconos de google -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 
-  <!--link para estilos--->
+  <!--link para estilos -->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
 
-  <!-- Custom styles for this template-->
+  <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- intro.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css">
 </head>
 
-<body>
+<body id="page-top">
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -102,11 +102,11 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque eventos de interés aquí" data-step="1">
+          <form v-on:submit.prevent="filterTextA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque eventos de interés aquí" data-step="1">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -123,11 +123,11 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
+                <form v-on:submit.prevent="filterTextB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -138,7 +138,7 @@
 
             <li class="nav-item" id="admin-button" style="display: none;">
               <a class="nav-link" href="admin.html">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                 <i class="fas fa-cog"></i>
               </a>
             </li>
@@ -166,75 +166,89 @@
           </ul>
         </nav>
 
-        <main class="col-10 offset-1 mb-5">
-          <!--<section data-intro="Search for events here" data-index="1">
-      <form action="" method="post" class="form-inline">
-        <label class="sr-only" for="event">Name</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="event" placeholder="Find events...">
-
-        <button type="submit" class="btn btn-primary mb-2"><i class="material-icons md-48">search</i> Search</button>
-      </form>
-    </section>-->
-
-          <section>
-            <h2 class="mb-3">Próximos Eventos </h2>
-            <p> Aquí encontrarás una gran variedad de eventos que se llevarán a cabo en las instalaciones de la ESPOL, si algún evento en especial te interesa podrás visualizar en el mapa una ruta de llegada en base a tu ubicación actual, además si
-              inicias sesión podrás guardar eventos y ser notificado sobre su inicio. </p>
-            <p>Revise la <a href="#" onclick="introJs().start()">Visita guiada</a> para ver mas detalles.</p>
-            <div class="row">
-              <!-- Upcoming events list -->
-              <div class="col-sm-8" id="all_events">
-                <ul class="list-group" data-intro="Los eventos próximos aparecen aquí." data-index="2">
-                  <li style="display: none!important;" id="template-event" class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                      <h4><span>Evento 1</span> <small class="hide-if-not-logged text-muted"><a id="p" href="#">Guardar</a></small></h4>
-                      <p class="mb-1">Auditorio de la FIEC</p>
-                      <small>Comienza a las 9:30</small>
-                    </div>
-                    <a class="goto-link" href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-                  </li>
-                </ul>
+        <!-- Begin Page Content -->
+        <div class="mx-5 px-5">
+          <h1 class="h3 mb-4 text-gray-800">Próximos Eventos </h1>
+          <div id="welcome" class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Bienvenido a Eventos</h6>
+              <div class="dropdown no-arrow">
+                <a id="close-well" href="#" class="btn btn-danger btn-circle btn-sm">
+                  <i class="fa fa-minus"></i>
+                </a>
               </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col mr-6">
+                  <p>Aquí encontrarás una gran variedad de eventos que se llevarán a cabo en las instalaciones de la ESPOL, si algún evento en especial te interesa podrás visualizar en el mapa una ruta de llegada en base a tu ubicación actual,
+                    además si
+                    inicias sesión podrás guardar eventos.</p>
+                  <p>Revisa la <a href="#" onclick="introJs().start()">Visita guiada</a> para ver más detalles.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <div class="col-sm-4">
-                <!-- Search by date -->
-                <section data-intro="Aqui puede filtrar los eventos." data-index="4">
-                  <h4>Filtro por fecha</h4>
-                  <form class="mb-4">
-                    <div class="form-group">
-                      <label for="from">Desde: </label>
-                      <input id="from" name="from" class="form-control" type="date">
-                    </div>
-                    <div class="form-group">
-                      <label for="to">Hasta: </label>
-                      <input id="to" name="to" class="form-control" type="date">
-                    </div>
-                    <button id="filtro_button" type="submit" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filtrar</button>
-                  </form>
-                </section>
+          <div class="row">
+            <!-- Upcoming events list -->
+            <div class="col-sm-8" id="all_events">
+              <ul class="list-group" data-intro="Los eventos próximos aparecen aquí." data-index="2">
+                <li v-for="(v,k) in events" class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4><span>{{v[0]}}</span> <small v-if="loggedIn" class="text-muted"><a id="p" href="#" v-on:click="saveEv(k,v)">Guardar</a></small></h4>
+                    <p class="mb-1">{{v[1]}}</p>
+                    <small>{{prettyDate(v[3])}}</small>
+                  </div>
+                  <a :href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                </li>
+              </ul>
+              <div v-if="noEvents" class='alert alert-warning' role='alert'>
+                ¡No hay eventos disponibles!
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <!-- Search by date -->
+              <section data-intro="Aqui puede filtrar los eventos." data-index="4">
+                <h4>Filtro por fecha</h4>
+                <div class="mb-4">
+                  <div class="form-group">
+                    <label for="from">Desde: </label>
+                    <input id="from" name="from" class="form-control" type="date">
+                  </div>
+                  <div class="form-group">
+                    <label for="to">Hasta: </label>
+                    <input id="to" name="to" class="form-control" type="date">
+                  </div>
+                  <button v-on:click="filterDate" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filtrar</button>
+                </div>
 
                 <!-- My saved events -->
                 <section id="mis-eventos" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="5">
                   <h4>Mis eventos</h4>
-                  <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Evento 2
-                      <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Evento 4
-                      <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Evento 5
-                      <a href="index.html"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                  <ul v-if="loggedIn" class="list-group">
+                    <li v-for="(v,k) in myEvents" class="list-group-item d-flex justify-content-between align-items-center">
+                      {{v[0]}}
+                      <div>
+                        <a v-on:click="deleteEv(k)" href="#"><i class="material-icons md-48">close</i></a>
+                        <a :href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                      </div>
                     </li>
                   </ul>
+                  <div v-if="noMyEvents && loggedIn" class='alert alert-warning' role='alert'>
+                    ¡No hay eventos guardados!
+                  </div>
+                  <div v-if="!loggedIn" class='alert alert-warning' role='alert'>
+                    ¡Inicie sesión para ver su lista de eventos y guardar eventos!
+                  </div>
                 </section>
-              </div>
             </div>
+          </div>
           </section>
-        </main>
+        </div>
       </div>
 
       <!-- Footer -->
@@ -294,6 +308,7 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="js/base.js"></script>
   <script src="js/eventos-script.js"></script>
 
