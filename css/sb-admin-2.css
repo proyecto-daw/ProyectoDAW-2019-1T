@@ -568,6 +568,12 @@ pre code {
   }
 }
 
+@media only screen and (max-width:320px){
+      .hideThis{
+        display: none;
+      }
+    }
+
 @media (min-width: 768px) {
   .container {
     max-width: 720px;

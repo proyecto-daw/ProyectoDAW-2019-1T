@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css" media="screen">
 
 </head>
 
@@ -51,13 +52,39 @@
                   <input type="date" class="form-control form-control-user" id="inputCareer" required placeholder="Fecha de nacimiento">
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="inputCareer" required placeholder="Lugar de origen">
+                  <input type="text" class="form-control form-control-user" id="inputCareer" required placeholder="Lugar de origen" list="provincias" name="provincias" >
+                  <datalist id="provincias">
+                    <option value="Azuay">
+                    <option value="Bolívar">
+                    <option value="Cañar">
+                    <option value="Carchi">
+                    <option value="Chimborazo">
+                    <option value="Cotopaxi">
+                    <option value="El Oro">
+                    <option value="Esmeraldas">
+                    <option value="Galápagos">
+                    <option value="Guayas">
+                    <option value="Imbabura">
+                    <option value="Loja">
+                    <option value="Los Ríos">
+                    <option value="Manabí">
+                    <option value="Morona Santiago">
+                    <option value="Napo">
+                    <option value="Orellana">
+                    <option value="Pastaza">
+                    <option value="Pichincha">
+                    <option value="Santa Elena">
+                    <option value="Santo Domingo de los Tsáchilas">
+                    <option value="Sucumbios">
+                    <option value="Tungurahua">
+                    <option value="Zamira Chinchipe">
+                  </datalist>
                 </div>       
               </div>
-              <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="inputEmail" required placeholder="Comentarios">
-                </div>
-                <button type="submit" href="#" id="signup" class="btn btn-primary btn-user btn-block">
+              <div class="form-group">   
+                  <textarea required class=form-control id= textbox name="Text1" rows="6" placeholder="Comentarios"></textarea>
+              </div>
+                <button type="submit" href="#" id="contactanos" class="btn btn-primary btn-user btn-block">
                   Enviar información
                 </button>
               </div>
