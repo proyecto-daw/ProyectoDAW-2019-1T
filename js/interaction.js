@@ -112,6 +112,11 @@ $(document).ready(function() {
       },
       success: function(data, status) {
         let cls = data.classes;
+        if(cls.length==0){
+          $("section#tabla_clases table").hide(); // Hide table from document
+        } else {
+          $("section#tabla_clases div.alert").hide(); // Hide "you have no classes today" message
+        }
         for (let c in cls) {
           var row = $("tr#class-session-template").clone().removeAttr("id");
           row.show();
@@ -129,22 +134,22 @@ $(document).ready(function() {
   } else {
     $("section#tabla_clases table").hide(); // Hide table from document
     $("section#tabla_clases p").hide(); // Also hide "Click here to upload calendar" text
+    $("section#tabla_clases div").hide(); // Also hide "You have no classes today" text
 
     // Insert "Log in!" message in place of table
     $("section#tabla_clases").append("<div class='alert alert-warning' role='alert'>¡Inicie sesión para ver su lista de clases!</div>");
   }
-});
 
-$(document).ready(function() {
-  // Callback for "Subir calendario" in modal
+  if (user) {
+    $("#username").val(user.EMAIL);
+    $("#password").val(user.PASSWORD);
+    $("#backurl").val(location.href);
+  }
+
+  $("#uploadCalForm").attr("action", "https://fathomless-tor-48974.herokuapp.com/upload_calendar");
+
   $("#uploadCalForm").submit(function(event) {
-    event.preventDefault();
-    console.log("Uploading cal");
-    // TODO Call API endpoint /upload_my_calendar, pass username&password on data, pass file
-
-    $("#uploadCalModal").modal("hide");
-
-    //location.reload(); // Force reload page to reload table (when required)
+    location.reload();
   });
 });
 
