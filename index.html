@@ -213,6 +213,7 @@
 
           <section id="tabla_clases">
             <h2>Mis Clases</h2>
+            <div class="alert alert-primary">No hay clases hoy</div>
             <table class="table table-hover" data-intro="Elija una clase aquí para ver el tiempo restante." data-step="3">
               <thead>
                 <tr>
@@ -300,10 +301,13 @@
         <div class="modal-body">
           <p>Escoja un archivo .ics generado por el Académico para establecer su lista de clases.</p>
           <p class="text-danger">¡Esto reemplazará su lista actual de clases!</p>
-          <form id="uploadCalForm">
+          <form id="uploadCalForm" enctype="multipart/form-data" method="post">
+            <input type="hidden" name="username" id="username">
+            <input type="hidden" name="password" id="password">
+            <input type="hidden" name="backurl" id="backurl">
             <div class="form-group">
               <label for="file">Archivo .ics</label>
-              <input type="file" accept=".ics" class="form-control-file" id="file">
+              <input type="file" accept=".ics" class="form-control-file" id="file" name="file">
             </div>
           </form>
         </div>
