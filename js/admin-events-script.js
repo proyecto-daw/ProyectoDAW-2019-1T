@@ -49,7 +49,6 @@ $(document).ready(function() {
     success: function(data, status) {
       WAYPOINTS = data.waypoints;
       for (let w in WAYPOINTS) {
-        console.log(w, WAYPOINTS[w]);
         arr.push({
           val: w,
           text: WAYPOINTS[w][2]

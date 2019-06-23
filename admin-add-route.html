@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>NexusMap-Administrar eventos</title>
+  <title>NexusMap-Administrar rutas</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,9 @@
 
   <!--link para estilos--->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
+
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb-steppers.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -70,7 +73,7 @@
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
           <i class="fa fa-question"></i>
-          <span> Qué hacemos </span></a>
+          <span>Qué hacemos </span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -162,56 +165,107 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="px-5 mx-5">
+        <div class="px-5 mx-5 mb-5">
 
           <div class="row">
             <div class="col">
-              <h2>Eventos</h2>
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <td scope="col">ID</td>
-                    <td scope="col">Nombre</td>
-                    <td scope="col">Lugar</td>
-                    <td scope="col">Waypoint más cercano</td>
-                    <td scope="col">Fecha y hora de inicio</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(v,k) in events" v-on:click="rowClicked(k)">
-                    <th scope="row">{{k}}</th>
-                    <td>{{v[0]}}</td>
-                    <td>{{v[1]}}</td>
-                    <td>{{waypoints[v[2]][2]}}</td>
-                    <td>{{format(v[3])}}</td>
-                  </tr>
-                  <tr id="edit-row">
-                    <th scope="row"><span id="targetId">*</span></th>
-                    <td><input form="form" id="inputName" class="form-control" type="text" required></td>
-                    <td><input form="form" id="inputPlace" class="form-control" type="text" required></td>
-                    <td></td>
-                    <td>
-                      <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                          <input required form="form" id="inputDate" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
-                          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              <h2>Rutas</h2>
+
+              <!-- Vertical Steppers -->
+              <div class="row mt-1">
+                <div class="col-md-12">
+
+                  <!-- Stepers Wrapper -->
+                  <ul class="stepper stepper-vertical">
+
+                    <!-- First Step -->
+                    <li v-bind:class="{active: onStep(1), warning: errorsA}">
+                      <a href="#">
+                        <span class="circle">1</span>
+                        <span class="label">Escoja un punto de origen</span>
+                      </a>
+
+                      <transition name="slide-fade">
+                        <!-- Section 1 -->
+                        <div v-if="onStep(1)" class="step-content grey lighten-3">
+                          <p v-if="errorsA" class="text-danger">Escoja un punto de origen de la lista</p>
+                          <div class="form-group">
+                            <label for="source">Origen</label>
+                            <select v-model="chosenSourceIndex" class="custom-select" name="source" id="source">
+                              <option v-for="(v,k) in waypoints" v-bind:value="k">{{v[2]}}</option>
+                            </select>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                      </transition>
+                    </li>
 
-              <form id="form"></form>
+                    <!-- Second Step -->
+                    <li v-bind:class="{active: onStep(2)}">
 
-              <p>Haga clic sobre un evento para editarlo.</p>
-              <p>Haga clic <a href="admin-places.html" target="_blank">aquí</a> para ver la lista de IDs de los waypoints.</p>
-              <p>
-                <input type="submit" form="form" id="submitEdit" value="Guardar" class="btn btn-success">
-                <input type="submit" form="form" id="submitDelete" value="Eliminar" class="btn btn-danger">
-              </p>
+                      <!--Section Title -->
+                      <a href="#">
+                        <span class="circle">2</span>
+                        <span class="label">Revise las rutas existentes</span>
+                      </a>
+
+                      <transition name="slide-fade">
+                        <!-- Section Description -->
+                        <div v-if="onStep(2)" class="step-content grey lighten-3">
+                          <ul>
+                            <li v-for="neigh in neighborsOfChosen">{{chosenSource[2]}} → {{waypoints[neigh[0]][2]}} ({{neigh[1]}} metros)</li>
+                          </ul>
+                        </div>
+                      </transition>
+                    </li>
+
+                    <!-- Third Step -->
+                    <li v-bind:class="{active: onStep(3), warning: errorsC}">
+
+                      <!--Section Title -->
+                      <a href="#">
+                        <span class="circle">3</span>
+                        <span class="label">Agregue rutas nuevas</span>
+                      </a>
+
+                      <transition name="slide-fade">
+                        <!-- Section Description -->
+                        <div v-if="onStep(3)" class="step-content grey lighten-3">
+                          <p v-if="errorsC" class="text-danger">Escoja un punto de destino de la lista e ingrese una distancia</p>
+                          <div class="form-group">
+                            <label for="sourceName">Origen</label>
+                            <input type="text" v-model="sourceName" class="form-control" id="sourceName" readonly>
+                          </div>
+                          <div class="form-group">
+                            <label for="target">Destino</label>
+                            <select form="form" v-model="chosenTargetIndex" class="custom-select" name="target" id="target">
+                              <option v-for="x in notNeighborsOfChosen" v-bind:value="x">{{waypoints[x][2]}}</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="dist">Distancia</label>
+                            <input form="form" v-model="dist" class="form-control" type="number" name="dist" id="dist">
+                          </div>
+
+                          <button form="form" v-if="onLast" class="btn btn-success" type="submit">Guardar</button>
+                        </div>
+                      </transition>
+                    </li>
+                  </ul>
+                  <!-- /.Stepers Wrapper -->
+
+                </div>
+              </div>
+
+              <!-- Steppers Navigation -->
+              <div class="row mt-1">
+                <div class="col-md-12 text-right">
+                  <button v-if="!onFirst" v-on:click="prevStep" class="btn btn-primary" v-bind:disabled="onFirst">Anterior</button>
+                  <button v-if="!onLast" v-on:click="nextStep" class="btn btn-primary">Siguiente</button>
+                </div>
+              </div>
+
+              <form id="form" v-on:submit.prevent="saveNewRoute">
+                <!-- /.Vertical Steppers -->
             </div>
           </div>
         </div>
@@ -282,9 +336,12 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"> </script>
   <script src="js/base.js"></script>
-  <script src="js/admin-events-script.js"></script>
+  <script src="js/admin-routes-script.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>

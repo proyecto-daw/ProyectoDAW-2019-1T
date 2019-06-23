@@ -196,7 +196,6 @@ $(document).ready(function() {
     $(this).trigger('notify-hide');
   });
   $(document).on('click', '.notifyjs-response-base .yes', function() {
-    console.log($(this));
     showOnMap(($(".title", $(this).parent().parent())).text()); // HACK: get text from notification
     //hide notification
     $(this).trigger('notify-hide');
@@ -313,7 +312,6 @@ function notifyResponse(response) {
 function showOnMap(text) {
   const email = text.split(" ")[0];
   const response = notifiedResponses[email];
-  console.log(response);
 
   window.location.href = "index.html?lat=" +
     response.LATITUD + "&lng=" + response.LONGITUD + "&friend=" + email;
