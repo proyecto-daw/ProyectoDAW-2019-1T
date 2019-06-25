@@ -21,9 +21,9 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-primary" >
 
-  <div class="container">
+  <div class="container" >
 
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -35,7 +35,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Contáctanos</h1>
               </div>
-              <form class="user">
+              <form class="user" id="contactanos" href="#">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="firstName" required placeholder="Nombre">
@@ -84,17 +84,16 @@
               <div class="form-group">   
                   <textarea required class=form-control id= textbox name="Text1" rows="6" placeholder="Comentarios"></textarea>
               </div>
-                <button type="submit" href="#" id="contactanos" class="btn btn-primary btn-user btn-block">
-                  Enviar información
-                </button>
+              <div>
+                <input type="submit" value="Submit" href="#" class="btn btn-primary btn-user btn-block" id="contactus">            
+              </div>
+              </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -108,6 +107,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/contactus-script.js"></script>
 
 </body>
 
