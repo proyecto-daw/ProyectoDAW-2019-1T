@@ -7,10 +7,6 @@ $(document).ready(function() {
     user = JSON.parse(user);
   }
 
-  $("#close-well").click(function() {
-    $("#welcome").slideUp();
-    window.localStorage.setItem("showBannerEvents", "no");
-  });
   if (localStorage.getItem("showBannerEvents")) {
     $("#welcome").hide();
   }
@@ -33,6 +29,10 @@ $(document).ready(function() {
       }
     },
     methods: {
+      closeWell: function() {
+        $("#welcome").slideUp();
+        window.localStorage.setItem("showBannerEvents", "no");
+      },
       prettyDate: function(d) {
         return moment(d).format('MMMM D YYYY, h:mm A')
       },

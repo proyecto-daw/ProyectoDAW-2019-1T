@@ -8,6 +8,10 @@ $(document).ready(function() {
     getMyFriends();
   }
 
+  if (localStorage.getItem("showBannerContacts")) {
+    $("#welcome").hide();
+  }
+
   $.notify.defaults({
     className: "success"
   });
@@ -31,6 +35,10 @@ $(document).ready(function() {
       }
     },
     methods: {
+      closeWell: function() {
+        $("#welcome").slideUp();
+        window.localStorage.setItem("showBannerContacts", "no");
+      },
       locate: function(email) {
         locate(email);
       },

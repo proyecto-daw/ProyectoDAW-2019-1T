@@ -1,8 +1,18 @@
 var user;
 
 $(document).ready(function() {
+  $("#close-well").click(function() {
+    $("#welcome").slideUp();
+    window.localStorage.setItem("showBannerProfile", "no");
+  });
+  if (localStorage.getItem("showBannerProfile")) {
+    $("#welcome").hide();
+  }
+
   updateUserData();
 });
+
+var toAnimate = [];
 
 function updateUserData() {
   user = sessionStorage.getItem("user");
@@ -31,10 +41,13 @@ function updateUserData() {
     },
     success: function(data, status) {
       let friends = data.friends;
+      let i = 0;
       for (let f of friends) {
+        i++;
         $("div#no-friends-alert").hide();
         var card = $("#friend-template").clone().removeAttr("id");
-        card.show();
+        card.attr("id", "friend-" + i);
+        //card.show();
         $(".text-primary", card).text(f.NAMES + " " + f.LASTNAMES);
         $("a.search-friend", card).click(function() {
           searchFor(f.EMAIL)
@@ -44,19 +57,23 @@ function updateUserData() {
         });
 
         $("#collapseCardFriends>.card-body").append(card);
+        toAnimate.push(card);
       }
-
-      let groups = data.groups;
-      for (let g of groups) {
-        $("div#no-groups-alert").hide();
-        var card = $("#group-template").clone().removeAttr("id");
-        card.show();
-        $(".text-primary", card).text(g.NOMBRE);
-        $("a", card).attr("html", $("a", card).attr("html") + g.ID);
-
-        $("#collapseCardGroups div").append(card);
-      }
+      animateFriends(1);
     }
+  });
+}
+
+function animateFriends(i) {
+  if (toAnimate.length == 0) {
+    return;
+  }
+  let next = toAnimate.shift();
+  next.show();
+
+  $("#friend-" + i).removeClass().addClass('animated slideInLeft faster').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    $(this).removeClass();
+    animateFriends(i + 1); // Only animate card after previous card has completed animation
   });
 }
 
