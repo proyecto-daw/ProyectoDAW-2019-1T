@@ -34,15 +34,19 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="far fa-map"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">NexusMap</div>
-      </a>
+      <li>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="far fa-map"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">NexusMap</div>
+        </a>
+      </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
@@ -52,7 +56,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
@@ -62,7 +68,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
@@ -72,7 +80,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider ">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
@@ -81,7 +91,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
     </ul>
     <!-- End of Sidebar -->
@@ -103,7 +115,7 @@
           <!-- Topbar Search -->
           <form v-on:submit.prevent="filterTextA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
@@ -124,7 +136,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form v-on:submit.prevent="filterTextB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar contactos..." aria-label="Search">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
@@ -195,7 +207,7 @@
                   </ul>
                 </div>
                 <div class="col mr-6">
-                  <img class="img-welcome img-thumbnail" src="img/contactos-welcome.jpg">
+                  <img class="img-welcome img-thumbnail" src="img/contactos-welcome.jpg" alt="welcome image">
                 </div>
               </div>
             </div>
@@ -247,7 +259,7 @@
               <!-- Collapsable Card Friends -->
               <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
-                <a href="#collapseCardFriends" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <a href="#collapseCardFriends" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true">
                   <h6 class="m-0 font-weight-bold text-primary">Amigos</h6>
                 </a>
                 <!-- Card Content - Collapse -->

@@ -21,7 +21,7 @@
   <!--Aplicar iconos de google-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!--link para estilos--->
+  <!--link para estilos-->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
 
   <!--Mapa-->
@@ -42,15 +42,19 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="far fa-map"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">NexusMap</div>
-      </a>
+      <li>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="far fa-map"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">NexusMap</div>
+        </a>
+      </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
@@ -59,7 +63,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="events.html">
@@ -68,7 +74,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="contacts.html">
@@ -76,7 +84,9 @@
           <span>Contactos</span></a>
       </li>
 
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
@@ -85,7 +95,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
     </ul>
     <!-- End of Sidebar -->
@@ -107,7 +119,7 @@
           <!-- Topbar Search -->
           <form v-on:submit.prevent="searchPlacesA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque puntos de interés aquí" data-step="1">
             <div class="input-group">
-              <input id="searchPlacesA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="searchPlacesA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
@@ -128,7 +140,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form v-on:submit.prevent="searchPlacesB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input id="searchPlacesB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="searchPlacesB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar lugar..." aria-label="Search">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>

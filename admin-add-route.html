@@ -18,7 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-  <!--link para estilos--->
+  <!--link para estilos-->
   <link rel="stylesheet" href="css/estilo.css" media="screen">
 
   <!-- Material Design Bootstrap -->
@@ -31,18 +31,22 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="side-nav fixed navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar ">
+    <ul class="side-nav fixed navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="far fa-map"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">NexusMap</div>
-      </a>
+      <li>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="far fa-map"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">NexusMap</div>
+        </a>
+      </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
@@ -51,7 +55,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="events.html">
@@ -60,7 +66,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="contacts.html">
@@ -68,7 +76,9 @@
           <span>Contactos</span></a>
       </li>
 
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
@@ -76,11 +86,15 @@
           <span>Qué hacemos </span></a>
       </li>
 
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
       <!-- Administrar usuarios -->
       <li class="nav-item">
@@ -89,7 +103,9 @@
           <span>Administrar usuarios</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <!-- Administrar sitios -->
       <li class="nav-item">
@@ -98,7 +114,9 @@
           <span>Administrar lugares</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <!-- Administrar eventos -->
       <li class="nav-item">
@@ -107,7 +125,9 @@
           <span>Administrar eventos</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <!-- Administrar rutas -->
       <li class="nav-item">
@@ -116,7 +136,9 @@
           <span>Administrar rutas</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
     </ul>
     <!-- End of Sidebar -->
@@ -264,7 +286,7 @@
                 </div>
               </div>
 
-              <form id="form" v-on:submit.prevent="saveNewRoute">
+              <form id="form" v-on:submit.prevent="saveNewRoute"></form>
                 <!-- /.Vertical Steppers -->
             </div>
           </div>
@@ -325,9 +347,9 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Tempus Dominus (prev. Eonasdan/bootstrap-datetimepicker) plugin -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 
   <!-- Core plugin JavaScript-->
@@ -337,7 +359,7 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"> </script>
   <script src="js/base.js"></script>

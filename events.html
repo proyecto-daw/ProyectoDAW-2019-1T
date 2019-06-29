@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -36,18 +35,22 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="side-nav fixed navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar ">
+    <ul class="side-nav fixed navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="far fa-map"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">NexusMap</div>
-      </a>
+      <li>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="far fa-map"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">NexusMap</div>
+        </a>
+      </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
@@ -56,7 +59,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="events.html">
@@ -65,7 +70,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="contacts.html">
@@ -73,7 +80,9 @@
           <span>Contactos</span></a>
       </li>
 
-      <hr class="sidebar-divider">
+      <li>
+        <hr class="sidebar-divider">
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="quehacemos.html">
@@ -82,7 +91,9 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <li>
+        <hr class="sidebar-divider my-0">
+      </li>
 
     </ul>
     <!-- End of Sidebar -->
@@ -104,7 +115,7 @@
           <!-- Topbar Search -->
           <form v-on:submit.prevent="filterTextA" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" data-intro="Busque eventos de interés aquí" data-step="1">
             <div class="input-group">
-              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="filterTextA" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
@@ -125,7 +136,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form v-on:submit.prevent="filterTextB" class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input id="filterTextB" type="text" class="form-control bg-light border-0 small" placeholder="Buscar evento..." aria-label="Search">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
@@ -202,7 +213,7 @@
                     <p class="mb-1">{{v[1]}}</p>
                     <small>{{prettyDate(v[3])}}</small>
                   </div>
-                  <a :href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                  <a v-bind:href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
                 </li>
               </ul>
               <div v-if="noEvents" class='alert alert-warning' role='alert'>
@@ -225,29 +236,29 @@
                   </div>
                   <button v-on:click="filterDate" class="btn btn-primary"><i class="material-icons md-48">filter_list</i> Filtrar</button>
                 </div>
+              </section>
 
-                <!-- My saved events -->
-                <section id="mis-eventos" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="5">
-                  <h4>Mis eventos</h4>
-                  <ul v-if="loggedIn" class="list-group">
-                    <li v-for="(v,k) in myEvents" class="list-group-item d-flex justify-content-between align-items-center">
-                      {{v[0]}}
-                      <div>
-                        <a v-on:click="deleteEv(k)" href="#"><i class="material-icons md-48">close</i></a>
-                        <a :href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
-                      </div>
-                    </li>
-                  </ul>
-                  <div v-if="noMyEvents && loggedIn" class='alert alert-warning' role='alert'>
-                    ¡No hay eventos guardados!
-                  </div>
-                  <div v-if="!loggedIn" class='alert alert-warning' role='alert'>
-                    ¡Inicie sesión para ver su lista de eventos y guardar eventos!
-                  </div>
-                </section>
+              <!-- My saved events -->
+              <section id="mis-eventos" data-intro="Los eventos guardados por el usuario aparecen aquí." data-index="5">
+                <h4>Mis eventos</h4>
+                <ul v-if="loggedIn" class="list-group">
+                  <li v-for="(v,k) in myEvents" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{v[0]}}
+                    <div>
+                      <a v-on:click="deleteEv(k)" href="#"><i class="material-icons md-48">close</i></a>
+                      <a v-bind:href="link(v)"><i class="material-icons md-48">arrow_forward_ios</i></a>
+                    </div>
+                  </li>
+                </ul>
+                <div v-if="noMyEvents && loggedIn" class='alert alert-warning' role='alert'>
+                  ¡No hay eventos guardados!
+                </div>
+                <div v-if="!loggedIn" class='alert alert-warning' role='alert'>
+                  ¡Inicie sesión para ver su lista de eventos y guardar eventos!
+                </div>
+              </section>
             </div>
           </div>
-          </section>
         </div>
       </div>
 
