@@ -108,7 +108,7 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <button v-on:click="toggleSidebar" id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
@@ -178,7 +178,7 @@
         </nav>
 
         <!-- Begin Page Content -->
-        <div class="mx-5 px-5">
+        <div class="page-content">
           <h1 class="h3 mb-4 text-gray-800">Próximos Eventos </h1>
           <div id="welcome" class="card shadow mb-4">
             <!-- Card Header - Dropdown -->

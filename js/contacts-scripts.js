@@ -35,6 +35,13 @@ $(document).ready(function() {
       }
     },
     methods: {
+      toggleSidebar: function() {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").hide();
+        }
+      },
       closeWell: function() {
         $("#welcome").slideUp();
         window.localStorage.setItem("showBannerContacts", "no");

@@ -14,6 +14,13 @@ $(document).ready(function() {
       users: {}
     },
     methods: {
+      toggleSidebar: function() {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").hide();
+        }
+      },
       isAdmin: function(u) {
         return u.ADMIN;
       },

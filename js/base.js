@@ -8,7 +8,17 @@ $(document).ready(function() {
     sessionStorage.removeItem("user");
     location.reload(); // Force reload page to restyle login button
   });
+
+  $("#sidebarToggleTop").click(function(o) {
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $(".sidebar .collapse").hide();
+    }
+  });
 });
+
+
 
 // Check if current user is logged in, style login button accordingly
 function updateUserDropdown() {

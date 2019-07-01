@@ -13,6 +13,15 @@ $(document).ready(function() {
     el: '#content',
     data: {
       waypoints: {}
+    },
+    methods: {
+      toggleSidebar: function() {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").hide();
+        }
+      },
     }
   });
 

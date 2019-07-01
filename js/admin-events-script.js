@@ -10,6 +10,13 @@ $(document).ready(function() {
       events: {}
     },
     methods: {
+      toggleSidebar: function() {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+        if ($(".sidebar").hasClass("toggled")) {
+          $(".sidebar .collapse").hide();
+        }
+      },
       format(x) {
         return moment(x).format('MMMM D YYYY, h:mm A');
       }

@@ -25,6 +25,7 @@ img {
 .table-hover tr:hover {
   cursor: pointer;
 }
+
 /* Doesn't apply to table header */
 .table-hover thead tr:hover {
   cursor: auto;
@@ -46,14 +47,6 @@ img {
   background-color: green;
 }
 
-#mapid {
-  height: 600px;
-  position: relative;
-  outline: none;
-  display: block;
-  border-radius: .35rem;
-}
-
 footer {
   color: white;
 }
@@ -66,8 +59,8 @@ footer a:hover {
   color: black;
 }
 
-#notSearch{
-	visibility:hidden;
+#notSearch {
+  visibility: hidden;
 }
 
 .notifyjs-request-base {
@@ -133,7 +126,8 @@ footer a:hover {
 #textbox {
   border-radius: 40px;
 }
-#h3 { 
+
+#h3 {
   display: block;
   font-size: 1.17em;
   margin-top: 1em;
@@ -142,3 +136,42 @@ footer a:hover {
   margin-right: 0;
 }
 
+/* -sm and up */
+@media (min-width: 576px) {
+  .page-content {
+    padding: 3rem !important;
+  }
+
+  #mapid {
+    height: 600px;
+    position: relative;
+    outline: none;
+    display: block;
+    border-radius: .35rem;
+  }
+}
+
+/* -xs */
+@media (max-width: 575px) {
+  .page-content {
+    padding: .5rem !important;
+  }
+
+  .step-content {
+    margin-left: 1rem!important;
+  }
+
+  #mapid {
+    height: 300px;
+    position: relative;
+    outline: none;
+    display: block;
+    border-radius: .35rem;
+  }
+}
+
+.page-content {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
