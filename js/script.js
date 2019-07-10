@@ -60,6 +60,22 @@ $(document).ready(function() {
         marker.bindPopup("<p>" + markers[k][2] + "</p>" +
           "<p><a href='#mapid' onclick='computeShortestRoute(" + k + ")'>¿Cómo llegar?</a></p>");
         trueMarkers.push(marker);
+
+        // Only for admins! Show all routes with distances
+        var user = sessionStorage.getItem("user");
+        if (user != null && JSON.parse(user).hasOwnProperty("ADMIN")) { // Logged in AND admin, show admin button
+          for (let r of markers[k][3]) {
+            var route = L.polyline([
+              [markers[r[0]][0], markers[r[0]][1]],
+              [markers[k][0], markers[k][1]]
+            ], {
+              color: 'red',
+              weight: 2
+            }).addTo(mymap);
+            route.bindPopup(""+r[1]);
+          }
+        }
+        // END only for admins
       }
       mymap.fitBounds(new L.featureGroup(trueMarkers).getBounds(), {
         padding: L.point(20, 20)
