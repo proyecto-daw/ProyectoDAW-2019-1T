@@ -118,13 +118,18 @@ function getMyFriends() {
 }
 
 function locate(email) {
+  message = prompt("Escriba un mensaje para " + email);
+  if (message == null) { // User clicked "Cancel" button
+    return;
+  }
   $.ajax({
     url: "https://fathomless-tor-48974.herokuapp.com/ask_position",
     method: "POST",
     data: {
       "username": user.EMAIL,
       "password": user.PASSWORD,
-      "friend_email": email
+      "friend_email": email,
+      "message": message
     },
     success: function() {
       $.notify("Se ha enviado una solicitud de posición a " + email + ".\nVe a la página de inicio para recibirla.");

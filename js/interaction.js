@@ -112,7 +112,7 @@ $(document).ready(function() {
       },
       success: function(data, status) {
         let cls = data.classes;
-        if(cls.length==0){
+        if (cls.length == 0) {
           $("section#tabla_clases table").hide(); // Hide table from document
         } else {
           $("section#tabla_clases div.alert").hide(); // Hide "you have no classes today" message
@@ -234,7 +234,7 @@ $(document).ready(function() {
 function notifyRequest(request) {
   notifiedRequest = request;
   $.notify({
-    title: request.CREADOR_EMAIL + " quiere saber tu ubicación.",
+    title: request.CREADOR_EMAIL + " quiere saber tu ubicación: " + request.MENSAJE,
     button: 'Aceptar'
   }, {
     style: 'request',
